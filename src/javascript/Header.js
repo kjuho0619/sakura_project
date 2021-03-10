@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import '../css/Header.css'
 import logo from '../images/sakura_logo.png'
 
@@ -26,16 +26,28 @@ class Header extends Component{
                     <div className="main-menu">
                         <ul className="menu">
                             <li>
-                                <a href="#">メインページ</a>
+                                <a href="/" onClick={function(ev){
+                                    ev.preventDefault();
+                                    this.props.parentFunction('MainPage');
+                                }.bind(this)}>メインページ</a>
                             </li>
                             <li>
-                                <a href="#">日別詳細</a>
+                                <a href="/DayForReport.html" onClick={function(ev){
+                                    ev.preventDefault();
+                                    this.props.parentFunction('DayForReport');
+                                }.bind(this)}>日別詳細</a>
                             </li>
                             <li>
-                                <a href="#">月別詳細</a>
+                                <a href="/MonthForReport.html" onClick={function(ev){
+                                    ev.preventDefault();
+                                    this.props.parentFunction('MonthForReport');
+                                }.bind(this)}>月別詳細</a>
                             </li>
                             <li>
-                                <a href="#">統計</a>
+                                <a href="#" onClick={function(ev){
+                                    ev.preventDefault();
+                                    this.props.parentFunction('Statistic');
+                                }.bind(this)}>統計</a>
                             </li>
                         </ul>
                     </div>
