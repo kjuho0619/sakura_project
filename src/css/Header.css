@@ -9,6 +9,7 @@ a{
 /* HEADER */
 header{
     font-family: 'Kosugi Maru', sans-serif;
+    border-bottom: 1px solid #c8c8c8;
 }
 header .nav{
     width: 1200px;
