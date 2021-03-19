@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/Header.css'
 import logo from '../images/sakura_logo.png'
 
 class Header extends Component{
+    logout = () => {
+        let result =window.confirm("ログインページに移動します。\nログアウトしますか。");
+        if(result) localStorage.clear();
+    }
+
     render(){
         return(
             <header>
                 <div className="nav">
-                    <a className="sakura-logo-atag" href="/">
+                    <a className="sakura-logo-atag" href="/main">
                         <img className="sakura-logo-img" src={logo} alt="SAKURA" />
                     </a>
-                    <a className="title-atag" href="/">さくら正真家計簿</a>
+                    <a className="title-atag" href="/main">さくら正真家計簿</a>
 
                     <div className="sub-menu">
                         <ul className="menu">
-                            <li>
-                                <a href="#">My Info</a>
+                            <li className="userID">
+                                {this.props.sessionUser}様、ようこそ!
                             </li>
                             <li>
-                                <a href="#">LogOut</a>
+                                <Link to="/privacy">My Info</Link>
+                            </li>
+                            <li>
+                                <a href="/" onClick={this.logout}>LogOut</a>
                             </li>
                         </ul>
                     </div>

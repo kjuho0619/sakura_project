@@ -10,7 +10,9 @@ const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
 
 class Main extends Component{
   state = {
-    page : "/"
+    page : "/",
+    id : localStorage.getItem('sessionID'),
+    sessionUser : localStorage.getItem('sessionUser')
   }
   
   parentFunction = (data) => {    
@@ -34,7 +36,7 @@ class Main extends Component{
   render(){
     return( 
       <div className="Main">
-        <Header parentFunction={this.parentFunction}/>
+        <Header parentFunction={this.parentFunction} sessionUser={this.state.sessionUser}/>
 
         <main>
           <div className="page-view">

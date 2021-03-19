@@ -65,6 +65,12 @@ header .sub-menu ul.menu li::before{
 header .sub-menu ul.menu li:first-child:before{
     display: none;
 }
+header .sub-menu ul.menu li.userID{
+    font-size: 12px;
+    padding:11px 16px;
+    display: block;
+    color:#656565;
+}
 header .sub-menu ul.menu li a{
     font-size: 12px;
     padding:11px 16px;
