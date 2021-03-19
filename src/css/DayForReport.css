@@ -200,3 +200,79 @@
     text-overflow:ellipsis;
     white-space:nowrap;
 }
+.Title-date-div{
+    position:relative;
+    display: flex;
+    height: 45px;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+.Title-year-div{
+    position: absolute;
+    color: #606060;
+    left: 125px;
+    top:0;
+    font-size: 13px;
+}
+.Title-month-div{
+    position: absolute;
+    color: #606060;
+    left: 155px;
+    top:0;
+    font-size: 13px;
+}
+.Title-day-div{
+    font-size: 30px;
+    position:absolute;
+    color: #505050;
+    left: 50px;
+}
+.Title-yoil-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: #606060;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-yoil6-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: royalblue;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-yoil0-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: orangered;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-dayIncome-div{
+    position: absolute;
+    color:royalblue;
+    font-size: 17px;
+    right: 160px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-dayExpend-div{
+    position: absolute;
+    color:orangered;
+    font-size: 17px;
+    right: 5px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

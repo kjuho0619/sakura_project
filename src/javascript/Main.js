@@ -12,6 +12,7 @@ class Main extends Component{
   state = {
     page : "/"
   }
+  
   parentFunction = (data) => {    
     this.setState({page:data});
   }
