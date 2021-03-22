@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/DayForReport.css'
+import DayForReportViewModal from './DayForReportViewModal'
 
 class InOutIncomeColor extends Component{
     render(){
@@ -58,6 +59,9 @@ class DayForReportList extends Component{
             index: -1
         };
     }
+    numberFormat(inputNumber) {
+        return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     priceColorDiv(inOutCode, price){
         if(inOutCode === "収入"){
             return <PriceIncomeColor inOutCode = {inOutCode} price = {price}></PriceIncomeColor>
@@ -92,18 +96,26 @@ class DayForReportList extends Component{
     }
 
     titleDayIncome(triger){
-        if(triger === "total" || triger === "income"){
+        if(triger === "total"){
             return(
-                <div className="Title-dayIncome-div">収入:{this.props.DayIncomeList[this.state.index]}</div>
+                <div className="Title-dayIncome-div">収入:{this.numberFormat(this.props.DayIncomeList[this.state.index])}円</div>
+            );
+        }else if(triger === "income"){
+            return(
+                <div className="Title-dayIncome2-div">収入:{this.numberFormat(this.props.DayIncomeList[this.state.index])}円</div>
             );
         }
         return;
     }
 
     titleDayExpend(triger){
-        if(triger === "total" || triger === "expend"){
+        if(triger === "total"){
             return(
-                <div className="Title-dayExpend-div">支出:{this.props.DayExpendList[this.state.index]}</div>
+                <div className="Title-dayExpend-div">支出:{this.numberFormat(this.props.DayExpendList[this.state.index])}円</div>
+            );
+        }else if(triger === "expend"){
+            return(
+                <div className="Title-dayExpend2-div">支出:{this.numberFormat(this.props.DayExpendList[this.state.index])}円</div>
             );
         }
         return;
@@ -118,7 +130,7 @@ class DayForReportList extends Component{
         }
 
         var year = String(ManagementForDay.Date).substr(0,4);
-        var month = String(ManagementForDay.Date).substr(5,2);
+        var month = Number(String(ManagementForDay.Date).substr(6,1))-1;
         var day = String(ManagementForDay.Date).substr(8,2);
         var yoil = new Date(year,month,day).getDay();
         var yoilText = '';
@@ -140,14 +152,12 @@ class DayForReportList extends Component{
         }
 
         if(this.state.flag === true){
-            //console.log("this.props.DayIncomeList : " + this.props.DayIncomeList);
-            //console.log("this.props.DayExpendList : " + this.props.DayExpendList);
             this.state.index += 1;
             var triger = this.props.triger;
             return(
                 <div className="Title-date-div">
                     <div className="Title-year-div">{year}.</div>
-                    <div className="Title-month-div">{month}.</div>
+                    <div className="Title-month-div">{month + 1}.</div>
                     <div className="Title-day-div">{day}日</div>
                     {this.titleDayIncome(triger)}
                     {this.titleDayExpend(triger)}
@@ -157,24 +167,28 @@ class DayForReportList extends Component{
         }
     }
 
+    dayReset(){
+        this.state.listDate = "";
+    }
+
     render(){
-
         this.state.index = -1;
-
         return(    
             <div className="dayForReport-bottom-div">
-
-
             {Object.keys(this.props.IdCheck).map(id => {
                 const ManagementForDay = this.props.IdCheck[id];
-
+                
                 return(
                     <div className="ManagementForDay-div">
                         {this.TitleDateDiv(ManagementForDay)}
 
-                        <div className="ManagementForDay-view-div" key={id}>
-                            <div className="AssestsCode-div">
-                                {ManagementForDay.AssestsCode}
+                        <div className="ManagementForDay-view-div" key={id} onClick={function(ev){
+                            this.props.isModalInOut();
+                            this.props.selectKey(id);
+                            this.props.selectInfo(ManagementForDay);
+                        }.bind(this)}>
+                            <div className="AssetsCode-div">
+                                {ManagementForDay.AssetsCode}
                             </div>  
                             <div className="DivisionCode-div">
                                 {ManagementForDay.DivisionCode}
@@ -191,6 +205,7 @@ class DayForReportList extends Component{
                     </div>
                 );
             })}   
+            {this.dayReset()}
         </div>
         );
     }
@@ -226,7 +241,10 @@ class DayForReport extends Component{
             DayIncomeList:[],//일별 수익 배역
             DayExpendList:[],//일별 지출 배열
             index: -1,
-            valueCount:0
+            valueCount:0,
+            isModalOn:false,
+            selectKey:'',
+            selectInfo:''
         };
     }
 
@@ -274,7 +292,7 @@ class DayForReport extends Component{
     checkID(year, month, triger){
 
         this.state.IdCheck = {};//리스트 초기화
-        
+        this.state.listDate = "";
         var index = 0;
 
         var key = Object.keys(this.state.ManagementForDay);
@@ -287,7 +305,7 @@ class DayForReport extends Component{
 
             var monthCut = String(data.Date).substr(6,1);
 
-            if(data.UserID === 'master'){
+            if(data.UserID === this.props.sessionUser){
                 if(yearCut === String(year)){
                     if(monthCut === String(month)){
 
@@ -296,7 +314,7 @@ class DayForReport extends Component{
 
                             this.DayIncomeExpend(data, dayCut);
                             
-                            this.state.IdCheck[index] = data;
+                            this.state.IdCheck[key[i]] = data;
                             this.state.lastIndex = index;
                             index += 1;
                         }else if(triger === 'income'){
@@ -305,7 +323,7 @@ class DayForReport extends Component{
                                 
                                 this.DayIncomeExpend(data, dayCut);
 
-                                this.state.IdCheck[index] = data;
+                                this.state.IdCheck[key[i]] = data;
                                 this.state.lastIndex = index;
                                 index += 1;
                             }
@@ -315,7 +333,7 @@ class DayForReport extends Component{
                                 
                                 this.DayIncomeExpend(data, dayCut);
 
-                                this.state.IdCheck[index] = data;
+                                this.state.IdCheck[key[i]] = data;
                                 this.state.lastIndex = index;
                                 index += 1;
                             }
@@ -347,6 +365,8 @@ class DayForReport extends Component{
             this.timeSetting();
             var key = Object.keys(ManagementForDay);
 
+            console.log(ManagementForDay);
+
             var valueCount = Object.keys(ManagementForDay).length;
             
             for(var i = 0 ; i < valueCount -1 ; i++){
@@ -358,8 +378,6 @@ class DayForReport extends Component{
                     }
                 }
             }
-            console.log(ManagementForDay);
-            console.log(valueCount);
 
             this.state.valueCount = valueCount;
 
@@ -399,9 +417,22 @@ class DayForReport extends Component{
         this.state.Total = 0;
     }
     
+    isModalInOut = () => {
+        this.setState({isModalOn:!this.state.isModalOn});
+    }
+
     dayForReportList(){
         return(
-            <DayForReportList triger = {this.state.triger} DayIncomeList = {this.state.DayIncomeList} DayExpendList={this.state.DayExpendList} lastIndex={this.state.lastIndex} IdCheck={this.state.IdCheck} month={this.state.month}></DayForReportList>
+            <DayForReportList 
+                selectInfo = {this.selectInfo}
+                selectKey = {this.selectKey}
+                isModalInOut={this.isModalInOut} 
+                triger = {this.state.triger} 
+                DayIncomeList = {this.state.DayIncomeList} 
+                DayExpendList={this.state.DayExpendList} 
+                lastIndex={this.state.lastIndex} 
+                IdCheck={this.state.IdCheck} 
+                month={this.state.month}/>
         );
     }
 
@@ -411,6 +442,31 @@ class DayForReport extends Component{
         this.state.DayExpend=0; //일지출
         this.state.DayIncomeList=[];//일별 수익 배역
         this.state.DayExpendList=[];//일별 지출 배열
+    }
+
+    valueView(){
+        this.valueReset();
+        this.state.IdCheck = {};
+        this.checkID(this.state.year, this.state.month, this.state.triger);
+        this.dayForReportList();
+    }
+
+    selectKey = (data) =>{
+        //console.log(data);
+        this.setState({selectKey:data});
+    }
+
+    selectInfo = (data) =>{
+        //console.log(data);
+        this.setState({selectInfo:data});
+    }
+
+    deleteIdCheckList = (data) =>{
+        //this.valueView();
+        console.log(data);
+        //this.setState({checkId:data});
+        //window.location.reload('DayForReport');
+        //this.props.parentFunction('DayForReport');
     }
 
     render(){
@@ -423,6 +479,7 @@ class DayForReport extends Component{
         let Total = this.numberFormat(this.state.Total);
 
         return(
+            <div className="dayForReport-Main">
             <div className="dayForReport-page">
                 <div className="dayForReport-top-div">
                     <div className="month-div">
@@ -465,30 +522,21 @@ class DayForReport extends Component{
                     <div className="total-div">
                         <div className="income-div" onClick={function(){
                             this.setState({triger:'income'});
-                            this.valueReset();
-                            this.state.IdCheck = {};
-                            this.checkID(this.state.year, this.state.month, this.state.triger);
-                            this.dayForReportList();
+                            this.valueView();
                         }.bind(this)}>
                             <div className="imcome-title">収入</div>
                             <div className="imcome-value">{TotalIncome}円</div>
                         </div>
                         <div className="expend-div" onClick={function(){
                             this.setState({triger:'expend'});
-                            this.valueReset();
-                            this.state.IdCheck = {};
-                            this.checkID(this.state.year, this.state.month, this.state.triger);
-                            this.dayForReportList();
+                            this.valueView();
                         }.bind(this)}>
                             <div className="expend-title">支出</div>
                             <div className="expend-value">{TotalExpend}円</div>
                         </div>
                         <div className="totalvalue-div"  onClick={function(){
                             this.setState({triger:'total'});
-                            this.valueReset();
-                            this.state.IdCheck = {};
-                            this.checkID(this.state.year, this.state.month, this.state.triger);
-                            this.dayForReportList();
+                            this.valueView();
                         }.bind(this)}>
                             <div className="totalvalue-title">合計</div>
                             <div className="totalvalue-value">{Total}円</div>
@@ -496,7 +544,16 @@ class DayForReport extends Component{
                     </div>
                 </div>
                 {this.dayForReportList()}
-
+            </div>
+            <DayForReportViewModal
+                isModalOn = {this.state.isModalOn}
+                isModalInOut = {this.isModalInOut}
+                selectKey = {this.state.selectKey}
+                selectInfo = {this.state.selectInfo}
+                databaseURL = {this.props.databaseURL}
+                IdCheckList = {this.state.IdCheck}
+                deleteIdCheckList = {this.deleteIdCheckList}
+            /> 
             </div>
         );
     }

@@ -25,7 +25,7 @@ class Main extends Component{
     if(this.state.page === '/' || this.state.page === 'MainPage'){
       return <MainPage></MainPage>;
     }else if(this.state.page === 'DayForReport'){
-      return <DayForReport databaseURL={databaseURL}></DayForReport>;
+      return <DayForReport parentFunction={this.parentFunction} databaseURL={databaseURL} sessionUser={this.state.sessionUser}></DayForReport>;
     }else if(this.state.page === 'MonthForReport'){
       return <MonthForReport databaseURL={databaseURL}></MonthForReport>;
     }else if(this.state.page === 'Statistic'){

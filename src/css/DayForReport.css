@@ -1,3 +1,6 @@
+.dayForReport-Main{
+    position: relative;
+}
 .dayForReport-page{
     width: 900px;
     height: 940px;
@@ -128,7 +131,7 @@
     transition:all .3s ease;
 }
 
-.AssestsCode-div{
+.AssetsCode-div{
     position:absolute;
     bottom: 7px;
     left: 283px;
@@ -265,11 +268,33 @@
     text-overflow:ellipsis;
     white-space:nowrap;
 }
+.Title-dayIncome2-div{
+    position: absolute;
+    color:royalblue;
+    font-size: 17px;
+    right: 60px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
 .Title-dayExpend-div{
     position: absolute;
     color:orangered;
     font-size: 17px;
     right: 5px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-dayExpend2-div{
+    position: absolute;
+    color:orangered;
+    font-size: 17px;
+    right: 60px;
     top:9px;
     width: 150px;
     overflow:hidden;
