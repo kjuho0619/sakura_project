@@ -65,14 +65,6 @@ class DayForReportViewModal extends Component{
 
     _delete(id) {
         console.log(id);
-        // let nextState = this.props.IdCheckList;
-        // delete nextState[id];
-        // this.props.isModalInOut();
-        // this.props.deleteIdCheckList(nextState);
-        // let nextState = this.props.IdCheckList;
-        // delete nextState[id];
-        // this.props.isModalInOut();
-        // this.props.deleteIdCheckList(nextState);
         return fetch(`${this.props.databaseURL}/ManagementForDay/${id}.json`, {
            method: 'DELETE'
         }).then(res =>{
@@ -81,18 +73,17 @@ class DayForReportViewModal extends Component{
           }
           return res.json();
         }).then(() => {
-            let nextState = this.props.IdCheckList;
-            delete nextState[id];
             this.props.isModalInOut();
-            this.props.deleteIdCheckList('DayForReport');
+            window.location.reload();
         })
+
     }
 
     handleDelete = (id) => {
         console.log(id);
-        if(window.confirm(id + "삭제하시겠습니까?")){
-            this._delete(id);
-        }
+        // if(window.confirm(id + "삭제하시겠습니까?")){
+        //     this._delete(id);
+        // }
         //this._delete(id);
     }
 
@@ -110,6 +101,8 @@ class DayForReportViewModal extends Component{
                         </a>
                     </div>
                     <div className="ViewModal-Middle-div">
+                        <div className="idcheck">{this.props.selectKey}::::</div>
+                        <div className="idcheck2">{this.props.selectKey2}</div>
                         {/* 資産 */}
                         <div className="ViewModal-AssetsCode-title">資産</div>
                         <div className="ViewModal-AssetsCode-value">{this.props.selectInfo.AssetsCode}</div>

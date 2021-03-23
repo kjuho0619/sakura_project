@@ -1,6 +1,10 @@
+import { waitForElementToBeRemoved } from '@testing-library/dom';
 import React, { Component } from 'react';
 import '../css/DayForReport.css'
 import DayForReportViewModal from './DayForReportViewModal'
+import Header from './Header.js'
+
+const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
 
 class InOutIncomeColor extends Component{
     render(){
@@ -173,20 +177,23 @@ class DayForReportList extends Component{
 
     render(){
         this.state.index = -1;
+        var index2 = -1;
+        // console.log(this.props.keyset[1]);
         return(    
             <div className="dayForReport-bottom-div">
             {Object.keys(this.props.IdCheck).map(id => {
+                index2++;
                 const ManagementForDay = this.props.IdCheck[id];
-                
                 return(
                     <div className="ManagementForDay-div">
                         {this.TitleDateDiv(ManagementForDay)}
 
-                        <div className="ManagementForDay-view-div" key={id} onClick={function(ev){
+                        <div className="ManagementForDay-view-div" key={id} name={index2} onClick={e =>{                        
                             this.props.isModalInOut();
                             this.props.selectKey(id);
+                            // this.props.selectKey2(this.props.keyset[index2]);
                             this.props.selectInfo(ManagementForDay);
-                        }.bind(this)}>
+                        }}>
                             <div className="AssetsCode-div">
                                 {ManagementForDay.AssetsCode}
                             </div>  
@@ -214,7 +221,10 @@ class DayForReport extends Component{
     constructor(){
         super();
         this.state = {
+            id : localStorage.getItem('sessionID'),//Member Key
+            sessionUser : localStorage.getItem('sessionUser'),//Member userid
             ManagementForDay:{}, //파이어베이스
+            keySet:{},//키정렬
             IdCheck:{},//id체크, 년도, 월체크, 일
             UserID:'',//ID
             AssestsCode:'',//자산코드
@@ -244,7 +254,8 @@ class DayForReport extends Component{
             valueCount:0,
             isModalOn:false,
             selectKey:'',
-            selectInfo:''
+            selectInfo:'',
+            selectKey2:''
         };
     }
 
@@ -294,20 +305,19 @@ class DayForReport extends Component{
         this.state.IdCheck = {};//리스트 초기화
         this.state.listDate = "";
         var index = 0;
-
         var key = Object.keys(this.state.ManagementForDay);
 
         for(var i = 0; i< this.state.valueCount; i++){
             
             var data = this.state.ManagementForDay[key[i]];
             
-            var yearCut = String(data.Date).substr(0,4);
+            var yearCut = Number(String(data.Date).substr(0,4));
 
-            var monthCut = String(data.Date).substr(6,1);
+            var monthCut = Number(String(data.Date).substr(5,2));
 
-            if(data.UserID === this.props.sessionUser){
-                if(yearCut === String(year)){
-                    if(monthCut === String(month)){
+            if(data.UserID === this.state.sessionUser){
+                if(yearCut === Number(year)){
+                    if(monthCut === Number(month)){
 
                         if(triger === 'total'){
                             var dayCut = String(data.Date).substr(8,2);
@@ -356,30 +366,62 @@ class DayForReport extends Component{
     }
 
     _get(){
-        fetch(`${this.props.databaseURL}/ManagementForDay.json`).then(res => {  
+        fetch(`${databaseURL}/ManagementForDay.json`).then(res => {  
          if(res.status !== 200){
             throw new Error(res.statusText);
           }
           return res.json();
         }).then((ManagementForDay) => {
             this.timeSetting();
+            let keyset = []; 
             var key = Object.keys(ManagementForDay);
 
-            console.log(ManagementForDay);
-
             var valueCount = Object.keys(ManagementForDay).length;
-            
+
+            for(let value in ManagementForDay){
+                keyset.push(value);
+            }
+            console.log("==key정렬전==");
+            console.log(keyset);
+
             for(var i = 0 ; i < valueCount -1 ; i++){
                 for(var j = (i+1) ; j< valueCount ; j++){
                     if(Date.parse(ManagementForDay[key[i]].Date) > Date.parse(ManagementForDay[key[j]].Date)){
+                        var temp2 = keyset[i];
+                        keyset[i] = keyset[j];
+                        keyset[j] = temp2;
+
                         var temp = ManagementForDay[key[i]];
                         ManagementForDay[key[i]] = ManagementForDay[key[j]];
                         ManagementForDay[key[j]] = temp;
                     }
                 }
             }
+            
+            
+            console.log("==key정렬후==");
+            console.log(keyset);
+            console.log(ManagementForDay);
+
+            //let ManagementForDaySort = [];
+            // let ManagementForDaySort = new Map();
+            // let index = 0;
+            
+            // for(let value in ManagementForDay){  
+            //     var v = ManagementForDay[value];
+            //     var key = keyset[index++];
+            //     ManagementForDaySort.set(key, v);
+            //     //ManagementForDaySort.push(k,v);
+            //     //console.log(ManagementForDaySort.get(k))
+            // }
+
+            
 
             this.state.valueCount = valueCount;
+
+            this.state.keySet = keyset;
+            
+            //this.setState({keySet: keyset});
 
             this.setState({ManagementForDay: ManagementForDay});
         });
@@ -426,6 +468,8 @@ class DayForReport extends Component{
             <DayForReportList 
                 selectInfo = {this.selectInfo}
                 selectKey = {this.selectKey}
+                selectKey2 = {this.selectKey2}
+                keyset = {this.state.keySet}
                 isModalInOut={this.isModalInOut} 
                 triger = {this.state.triger} 
                 DayIncomeList = {this.state.DayIncomeList} 
@@ -452,108 +496,110 @@ class DayForReport extends Component{
     }
 
     selectKey = (data) =>{
-        //console.log(data);
         this.setState({selectKey:data});
     }
 
-    selectInfo = (data) =>{
-        //console.log(data);
-        this.setState({selectInfo:data});
+    selectKey2 = (data) =>{
+        this.setState({selectKey2:data});
     }
 
-    deleteIdCheckList = (data) =>{
-        //this.valueView();
-        console.log(data);
-        //this.setState({checkId:data});
-        //window.location.reload('DayForReport');
-        //this.props.parentFunction('DayForReport');
+    selectInfo = (data) =>{
+        this.setState({selectInfo:data});
     }
 
     render(){
         this.valueSetting();
-
         this.checkID(this.state.year, this.state.month, this.state.triger);
         
         let TotalIncome = this.numberFormat(this.state.TotalIncome);
         let TotalExpend = this.numberFormat(this.state.TotalExpend);
         let Total = this.numberFormat(this.state.Total);
-
         return(
-            <div className="dayForReport-Main">
-            <div className="dayForReport-page">
-                <div className="dayForReport-top-div">
-                    <div className="month-div">
-                        <div className="month-left-div">
-                            <a class="material-icons" onClick={function(){
-                                this.valueReset();
-                                var cMonth = this.state.month - 1;
-                                var cYear = this.state.year - 1;
-                                this.setState({triger:'total'});
-                                if(cMonth === 0){
-                                    this.setState({year:cYear});
-                                    this.setState({month:12});
-                                }else{
-                                    this.setState({month:cMonth});
-                                }
-                            }.bind(this)}>
-                                keyboard_arrow_left
-                            </a>
+            <div className="Main">
+                <Header databaseURL={databaseURL} sessionUser={this.state.sessionUser}/>
+
+            <main>
+                <div className="page-view">
+                    <div className="dayForReport-Main">
+                        <div className="dayForReport-page">
+                            <div className="dayForReport-top-div">
+                                <div className="month-div">
+                                    <div className="month-left-div">
+                                        <a class="material-icons" onClick={function(){
+                                            this.valueReset();
+                                            var cMonth = this.state.month - 1;
+                                            var cYear = this.state.year - 1;
+                                            this.setState({triger:'total'});
+                                            if(cMonth === 0){
+                                                this.setState({year:cYear});
+                                                this.setState({month:12});
+                                            }else{
+                                                this.setState({month:cMonth});
+                                            }
+                                        }.bind(this)}>
+                                            keyboard_arrow_left
+                                        </a>
+                                    </div>
+                                    <div className="month-title-div">
+                                        {this.state.year}年{this.state.month}月
+                                    </div>
+                                    <div className="month-right-div">
+                                        <a class="material-icons" onClick={function(){
+                                            this.valueReset();
+                                            var cMonth = this.state.month + 1;
+                                            var cYear = this.state.year + 1;
+                                            this.setState({triger:'total'});
+                                            if(cMonth === 13){
+                                                this.setState({year:cYear});
+                                                this.setState({month:1});  
+                                            }else{
+                                                this.setState({month:cMonth});
+                                            }
+                                        }.bind(this)}>
+                                            keyboard_arrow_right
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="total-div">
+                                    <div className="income-div" onClick={function(){
+                                        this.setState({triger:'income'});
+                                        this.valueView();
+                                    }.bind(this)}>
+                                        <div className="imcome-title">収入</div>
+                                        <div className="imcome-value">{TotalIncome}円</div>
+                                    </div>
+                                    <div className="expend-div" onClick={function(){
+                                        this.setState({triger:'expend'});
+                                        this.valueView();
+                                    }.bind(this)}>
+                                        <div className="expend-title">支出</div>
+                                        <div className="expend-value">{TotalExpend}円</div>
+                                    </div>
+                                    <div className="totalvalue-div"  onClick={function(){
+                                        this.setState({triger:'total'});
+                                        this.valueView();
+                                    }.bind(this)}>
+                                        <div className="totalvalue-title">合計</div>
+                                        <div className="totalvalue-value">{Total}円</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {this.dayForReportList()}
                         </div>
-                        <div className="month-title-div">
-                            {this.state.year}年{this.state.month}月
-                        </div>
-                        <div className="month-right-div">
-                            <a class="material-icons" onClick={function(){
-                                this.valueReset();
-                                var cMonth = this.state.month + 1;
-                                var cYear = this.state.year + 1;
-                                this.setState({triger:'total'});
-                                if(cMonth === 13){
-                                    this.setState({year:cYear});
-                                    this.setState({month:1});  
-                                }else{
-                                    this.setState({month:cMonth});
-                                }
-                            }.bind(this)}>
-                                keyboard_arrow_right
-                            </a>
+                        <DayForReportViewModal
+                            isModalOn = {this.state.isModalOn}
+                            isModalInOut = {this.isModalInOut}
+                            selectKey = {this.state.selectKey}
+                            selectKey2 = {this.state.selectKey2}
+                            selectInfo = {this.state.selectInfo}
+                            databaseURL = {databaseURL}
+                            IdCheckList = {this.state.IdCheck} 
+                            // deleteFromList = {this.deleteFromList}
+                            />
                         </div>
                     </div>
-                    <div className="total-div">
-                        <div className="income-div" onClick={function(){
-                            this.setState({triger:'income'});
-                            this.valueView();
-                        }.bind(this)}>
-                            <div className="imcome-title">収入</div>
-                            <div className="imcome-value">{TotalIncome}円</div>
-                        </div>
-                        <div className="expend-div" onClick={function(){
-                            this.setState({triger:'expend'});
-                            this.valueView();
-                        }.bind(this)}>
-                            <div className="expend-title">支出</div>
-                            <div className="expend-value">{TotalExpend}円</div>
-                        </div>
-                        <div className="totalvalue-div"  onClick={function(){
-                            this.setState({triger:'total'});
-                            this.valueView();
-                        }.bind(this)}>
-                            <div className="totalvalue-title">合計</div>
-                            <div className="totalvalue-value">{Total}円</div>
-                        </div>
-                    </div>
-                </div>
-                {this.dayForReportList()}
-            </div>
-            <DayForReportViewModal
-                isModalOn = {this.state.isModalOn}
-                isModalInOut = {this.isModalInOut}
-                selectKey = {this.state.selectKey}
-                selectInfo = {this.state.selectInfo}
-                databaseURL = {this.props.databaseURL}
-                IdCheckList = {this.state.IdCheck}
-                deleteIdCheckList = {this.deleteIdCheckList}
-            /> 
+                </main>
             </div>
         );
     }

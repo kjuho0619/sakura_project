@@ -11,8 +11,8 @@ const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
 class Main extends Component{
   state = {
     page : "/",
-    id : localStorage.getItem('sessionID'),
-    sessionUser : localStorage.getItem('sessionUser')
+    id : localStorage.getItem('sessionID'),//Member Key
+    sessionUser : localStorage.getItem('sessionUser')//Member userid
   }
   
   parentFunction = (data) => {    
@@ -20,11 +20,12 @@ class Main extends Component{
   }
 
   pageMove(){
-    console.log(this.state.page);
+    //console.log(this.state.page);
 
-    if(this.state.page === '/' || this.state.page === 'MainPage'){
+  if(this.state.page === '/' || this.state.page === 'MainPage'){
       return <MainPage></MainPage>;
     }else if(this.state.page === 'DayForReport'){
+      //window.location.reload();
       return <DayForReport parentFunction={this.parentFunction} databaseURL={databaseURL} sessionUser={this.state.sessionUser}></DayForReport>;
     }else if(this.state.page === 'MonthForReport'){
       return <MonthForReport databaseURL={databaseURL}></MonthForReport>;
@@ -36,7 +37,7 @@ class Main extends Component{
   render(){
     return( 
       <div className="Main">
-        <Header parentFunction={this.parentFunction} sessionUser={this.state.sessionUser}/>
+        <Header databaseURL={databaseURL} parentFunction={this.parentFunction} sessionUser={this.state.sessionUser}/>
 
         <main>
           <div className="page-view">
