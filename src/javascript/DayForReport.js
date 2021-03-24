@@ -1,10 +1,10 @@
-import { waitForElementToBeRemoved } from '@testing-library/dom';
 import React, { Component } from 'react';
 import '../css/DayForReport.css'
 import DayForReportViewModal from './DayForReportViewModal'
 import Header from './Header.js'
 
 const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
+var index3 = 0;
 
 class InOutIncomeColor extends Component{
     render(){
@@ -175,25 +175,28 @@ class DayForReportList extends Component{
         this.state.listDate = "";
     }
 
+    
     render(){
         this.state.index = -1;
         var index2 = -1;
-        // console.log(this.props.keyset[1]);
+        console.log(this.props.DayExpendList);
         return(    
             <div className="dayForReport-bottom-div">
             {Object.keys(this.props.IdCheck).map(id => {
                 index2++;
+               
                 const ManagementForDay = this.props.IdCheck[id];
                 return(
                     <div className="ManagementForDay-div">
                         {this.TitleDateDiv(ManagementForDay)}
 
-                        <div className="ManagementForDay-view-div" key={id} name={index2} onClick={e =>{                        
+                        <div className="ManagementForDay-view-div" key={id} name={this.props.keyset[index2]} onClick={function(){                        
                             this.props.isModalInOut();
                             this.props.selectKey(id);
-                            // this.props.selectKey2(this.props.keyset[index2]);
+                            index3++;
+                            this.props.selectKey2(this.props.keyset[index3]);
                             this.props.selectInfo(ManagementForDay);
-                        }}>
+                        }.bind(this)}>
                             <div className="AssetsCode-div">
                                 {ManagementForDay.AssetsCode}
                             </div>  
@@ -397,8 +400,15 @@ class DayForReport extends Component{
                     }
                 }
             }
-            
-            
+
+            // for(var i = 0 ; i < valueCount ; i ++){
+            //     Object.keys(ManagementForDay)[i] = keyset[i].toString;
+            //     //key[i] = keyset[i];
+            // }
+
+            console.log(ManagementForDay);
+
+
             console.log("==key정렬후==");
             console.log(keyset);
             console.log(ManagementForDay);
@@ -586,6 +596,7 @@ class DayForReport extends Component{
                             </div>
 
                             {this.dayForReportList()}
+
                         </div>
                         <DayForReportViewModal
                             isModalOn = {this.state.isModalOn}

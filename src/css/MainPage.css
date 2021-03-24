@@ -62,19 +62,11 @@ li > .item_contents {
     grid-template-columns: auto auto;
 }
 
-.grid-item {
-    /* border: 1px solid black; */
-}
-
 .in-come-ul {
     /* border-radius: 3px;
     border: 1px solid #b5b5b5; */
     height: 430px;
     overflow-y: scroll;
-}
-
-.grid-item-title, .grid-item-content {
-    /* border: 1px solid black; */
 }
 
 .grid-item-title {

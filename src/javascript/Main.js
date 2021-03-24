@@ -4,7 +4,7 @@ import Header from './Header.js'
 import MainPage from './MainPage'
 import DayForReport from './DayForReport'
 import MonthForReport from './MonthForReport'
-import Statistic from './Statistic'
+// import Statistic from './Statistic'
 
 const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
 
@@ -29,9 +29,10 @@ class Main extends Component{
       return <DayForReport parentFunction={this.parentFunction} databaseURL={databaseURL} sessionUser={this.state.sessionUser}></DayForReport>;
     }else if(this.state.page === 'MonthForReport'){
       return <MonthForReport databaseURL={databaseURL}></MonthForReport>;
-    }else if(this.state.page === 'Statistic'){
-      return <Statistic></Statistic>;
     }
+    // else if(this.state.page === 'Statistic'){
+    //   return <Statistic></Statistic>;
+    // }
   }
 
   render(){

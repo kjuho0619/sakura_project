@@ -7,7 +7,7 @@ import Privacy from './javascript/Privacy';
 import MyInfo from './javascript/MyInfo';
 import DayForReport from './javascript/DayForReport'
 import MonthForReport from './javascript/MonthForReport'
-import AboutUS from './javascript/Statistic'
+import AboutUS from './javascript/AboutUs'
 
 class App extends Component{
   
