@@ -1,0 +1,303 @@
+.dayForReport-Main{
+    position: relative;
+}
+.dayForReport-page{
+    width: 900px;
+    height: 940px;
+    margin:0 auto;
+    position: relative;
+    padding-top: 30px;
+}
+.dayForReport-top-div{
+    border : 1px solid;
+}
+.month-div{
+    background: whitesmoke;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    font-size: 35px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid #c8c8c8;
+}
+.month-left-div{
+    position:absolute;
+    left: 250px;
+    cursor: pointer;
+}
+.month-title-div{
+    position:absolute;
+    top:0;
+    left: 300px;
+    right: 300px;
+}
+.month-right-div{
+    position:absolute;
+    right: 250px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.month-left-div a{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.month-right-div a{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.month-left-div a:hover{
+    color:#e7284c;
+    transition:all .3s ease;
+}
+.month-right-div a:hover{
+    color:#e7284c;
+    transition:all .3s ease;
+}
+.total-div{
+    width: 100%;
+    height: 100px;
+    background: white;
+    text-align: center;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+}
+.income-div{
+    color: royalblue;
+    position:absolute;
+    left: 125px;
+    top:25px;
+    cursor: pointer;
+}
+.income-div:hover{
+    color: blue;
+}
+.expend-div{
+    color: orangered;
+    position:absolute;
+    left: 425px;
+    top:25px;
+    cursor: pointer;
+}
+.expend-div:hover{
+    color: #cc0000;
+}
+.totalvalue-div{
+    position:absolute;
+    right: 125px;
+    top:25px;
+    cursor: pointer;
+}
+.totalvalue-div:hover{
+    color: #606060;
+}
+.imcome-title{
+    font-size: 20px;
+}
+.imcome-value{
+    font-size: 18px;
+}
+.expend-title{
+    font-size: 20px;
+}
+.expend-value{
+    font-size: 18px;
+}
+.totalvalue-title{
+    font-size: 20px;
+}
+.totalvalue-value{
+    font-size: 18px;
+}
+.dayForReport-bottom-div{
+    height: 790px;
+    overflow: auto;
+    border: 1px solid;
+    background: white;
+}
+.ManagementForDay-view-div{
+    font-size: 20px;
+    background: white;
+    border-bottom: 1px solid #c8c8c8;
+    display: flex;
+    height: 100px;
+    position:relative;
+    cursor: pointer;
+}
+.ManagementForDay-view-div:hover{
+    background: #eeeeee;
+    transition:all .3s ease;
+}
+
+.AssetsCode-div{
+    position:absolute;
+    bottom: 7px;
+    left: 283px;
+    font-size: 15px;
+    color: #606060;
+    width: 70px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.DivisionCode-div{
+    position:absolute;
+    font-size: 17px;
+    top:40px;
+    left:80px;
+    width: 170px;
+    color: #606060;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.IncomeInOutCode-div{
+    position:absolute;
+    top:45px;
+    right: 230px;
+    font-size: 15px;
+    color: royalblue;
+}
+.ExpendInOutCode-div{
+    position:absolute;
+    top:45px;
+    right: 230px;
+    font-size: 15px;
+    color: orangered;
+}
+.Date-div{
+    position:absolute;
+    top:5px;
+    left: 5px;
+    font-size: 15px;
+}
+.ImcomePrice-div{
+    position:absolute;
+    top:40px;
+    right: 80px;
+    width: 120px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: royalblue;
+}
+.ExpendPrice-div{
+    position:absolute;
+    top:40px;
+    right: 80px;
+    width: 120px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: orangered;
+}
+.Content-div{
+    position:absolute;
+    top:27px;
+    left: 280px;
+    font-size: 25px;
+    width: 350px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-date-div{
+    position:relative;
+    display: flex;
+    height: 45px;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+.Title-year-div{
+    position: absolute;
+    color: #606060;
+    left: 125px;
+    top:0;
+    font-size: 13px;
+}
+.Title-month-div{
+    position: absolute;
+    color: #606060;
+    left: 155px;
+    top:0;
+    font-size: 13px;
+}
+.Title-day-div{
+    font-size: 30px;
+    position:absolute;
+    color: #505050;
+    left: 50px;
+}
+.Title-yoil-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: #606060;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-yoil6-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: royalblue;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-yoil0-div{
+    position: absolute;
+    left:122px;
+    bottom: 3px;
+    background: orangered;
+    padding: 1px;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.Title-dayIncome-div{
+    position: absolute;
+    color:royalblue;
+    font-size: 17px;
+    right: 160px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-dayIncome2-div{
+    position: absolute;
+    color:royalblue;
+    font-size: 17px;
+    right: 60px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-dayExpend-div{
+    position: absolute;
+    color:orangered;
+    font-size: 17px;
+    right: 5px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.Title-dayExpend2-div{
+    position: absolute;
+    color:orangered;
+    font-size: 17px;
+    right: 60px;
+    top:9px;
+    width: 150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

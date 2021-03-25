@@ -1,0 +1,16 @@
+.Main{
+    color:#333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+main{
+    background: #ffebee;
+}
+.page-view{
+    background: #ffebee;
+    width: 1200px;
+    height: 1000px;
+    margin:0 auto;
+}
