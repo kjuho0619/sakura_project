@@ -8,9 +8,9 @@
     width: 400px;
     height: 69%;
     position: absolute;
-    padding: 20px 0 20px 150px;
-    top: 15px;
-    left: 550px;
+    padding: 50px 0 20px 170px;
+    top: 70px;
+    left: 700px;
     background:white;
     border-radius: 15px;
 }
@@ -117,7 +117,7 @@
     position:relative;
     background: rgb(241, 128, 232);
     top: -50px;
-    left: 117px;
+    left: 114px;
     bottom:50%;
     border-radius: 10px;
 }

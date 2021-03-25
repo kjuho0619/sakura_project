@@ -29,10 +29,9 @@
 .Login .Login-Form{
     height: 600px;
     width: 500px;
-    /* background: plum; */
     position: absolute;
-    top:60px;
-    left:500px;
+    top:160px;
+    left:700px;
 }
 .Login .test-div{
     width: 100%;

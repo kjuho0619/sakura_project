@@ -10,7 +10,7 @@
     position: relative;
     padding: 40px 500px;
     top: 0px;
-    left: 190px;
+    left: 350px;
     background:white;
 }
 .MyInfo .label{
@@ -31,7 +31,7 @@
     height: 20px;
 }
 .MyInfo select{
-    width: 70px;
+    width: 69px;
     height: 30px;
 }
 .MyInfo .addr input{
@@ -64,7 +64,7 @@
     height: 30px;
     cursor: pointer;
     position: absolute;
-    left: 11px;
+    left: 10px;
     top: 16px;
     color: whitesmoke;
     outline: none;
@@ -107,7 +107,7 @@
     position:relative;
     background: rgb(241, 128, 232);
     top: -50px;
-    left: 117px;
+    left: 111px;
     bottom:50%;
     border-radius: 10px;
     cursor: pointer;
