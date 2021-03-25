@@ -270,6 +270,7 @@ class FixedModal  extends Component {
             )
         } else {
             return (
+                <div className="modal-main-frame">
                 <div className="modal-frame">
                     <div className="cloase-btn">
                         <a href="" onClick={function (e) {
@@ -318,6 +319,7 @@ class FixedModal  extends Component {
                             <br />
                             <br />
                         {ButtonChoice}
+                </div>
                 </div>
             )
         }

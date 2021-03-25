@@ -13,7 +13,7 @@ class ModalCopy extends Component {
             DetailContent: '',
             Date: '',
             Price: '',
-            InOutCode: '収入',
+            InOutCode: '',
             DivisionCode: '',
             AssetsCode: '',
             id: ''
@@ -43,7 +43,7 @@ class ModalCopy extends Component {
             DetailContent: this.state.DetailContent,
             Date: this.state.Date,
             Price: Number(this.state.Price),
-            InOutCode: this.state.InOutCode,
+            InOutCode: this.props.InOutCode,
             DivisionCode: this.state.DivisionCode,
             AssetsCode: this.state.AssetsCode
         }
@@ -110,8 +110,11 @@ class ModalCopy extends Component {
     render() {
         const clickDivision = this.clickDivision;
 
+        console.log("Modal InOut Check : " + this.state.InOutCode);
+        console.log("Props InOut Check : " + this.props.InOutCode);
         let InOutChoice = '';
-        if (this.state.InOutCode === "収入") {
+        // 
+        if (this.props.InOutCode == "収入") {
             InOutChoice =
                 <div aria-label="DivisionCode" className="btn-group3" name="DivisionCode" value={this.state.DivisionCode} onChange={this.handleValueChange}>
                     
@@ -126,7 +129,8 @@ class ModalCopy extends Component {
                             <br />
                     
                 </div>
-        } else if (this.state.InOutCode === "支出") {
+                // 
+        } else if (this.props.InOutCode == "支出") {
             InOutChoice =
                 <div aria-label="DivisionCode" className="btn-group3" name="DivisionCode"  value={this.state.DivisionCode} onChange={this.handleValueChange}>
                     
@@ -165,19 +169,19 @@ class ModalCopy extends Component {
             )
         } else {
             return (
-
+                <div className="modal-main-frame">
                 <div className="modal-frame">
                     <div>
                             <br /> 
-                        <input disabled type="text" placeholder="収入・支出" lable="収入・支出" name="InOutCode" value={this.state.InOutCode} onChange={this.handleValueChange} />
+                        <input disabled type="text" placeholder="収入・支出" lable="収入・支出" name="InOutCode" value={this.props.InOutCode} onChange={this.handleValueChange} />
                             <br /> 
                     </div>
                             <br />
 
-                    <div className="btn-group1" name="InOutCode" value={this.state.InOutCode} onChange={this.handleValueChange}>
+                    {/* <div className="btn-group1" name="InOutCode" value={this.state.InOutCode} onChange={this.handleValueChange}>
                         <button variant="primary" value="収入" name="InOutCode" onClick={this.clickInOut}>収入</button>
                         <button variant="danger"  value="支出" name="InOutCode" onClick={this.clickInOut}>支出</button>
-                    </div>
+                    </div> */}
                             <br />
                     <div>
                             <br />
@@ -224,6 +228,7 @@ class ModalCopy extends Component {
                             this.props.modalShow(false);
                         }.bind(this)}> やめる </button>
                     </div>
+                </div>
                 </div>
             )
         }

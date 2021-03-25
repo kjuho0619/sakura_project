@@ -188,6 +188,12 @@ class MainPage extends Component {
     this.setState(nextState)
   }
 
+  InOutChange = (e) => {
+    this.setState( {
+      InOutCode : e
+    })
+  }
+
   render(){
     var currentDate = this.state.currentDate;
     var dateList = currentDate.split("-");
@@ -201,7 +207,21 @@ class MainPage extends Component {
         <div className="flex-container upper-side">
           <div className="grid-item-upper-left">
             <div className="grid-item-title">
-              <h1 className="item-title">日別収入{this.state.thatPrice}</h1>
+              <div className="item-title">
+                <span className="per-day-title">日別収入</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  e.preventDefault();
+                  if(this.state.dayFlag === false){
+                    this.InOutChange("収入");
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  } else if(this.state.dayFlag === true) {
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
             </div>
             <div className="grid-item-content">
               <ul className="ul-list">
@@ -220,13 +240,28 @@ class MainPage extends Component {
           </div>
           <div className="grid-item-upper-right">
             <div className="grid-item-title">
-              <h1 className="item-title day-out-title">日別支出</h1>
+              <div className="item-title">
+                <span className="per-day-title">日別支出</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  e.preventDefault();
+                  if(this.state.dayFlag === false){
+                    this.InOutChange("支出");
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  } else if(this.state.dayFlag === true) {
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
             </div>
             <div className="grid-item-content">
               <ul className="ul-list">
                 <MakeList state={this.state.managementForDay}
                   Select="Day"
                   InOutCode="支出"
+                  CurrentDate={this.state.currentDate}
                   ModalShow={this.modalShow}
                   KeyChange={this.keyChange}
                   ThatPrice={this.ThatPrice}
@@ -239,7 +274,20 @@ class MainPage extends Component {
         <div className="flex-container lower-side">
           <div className="grid-item-lower-left">
             <div className="grid-item-title">
-              <h1 className="item-title">月別収入</h1>
+              <div className="item-title">
+                <span className="per-day-title">月別収入</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  if(this.state.monthFlag === false){
+                    this.InOutChange("収入");
+                    this.monthModal(!this.state.modalSxhow1);
+                    this.dayModal(false);
+                  } else if(this.state.monthFlag ===true){
+                    this.monthModal(!this.state.modalShow1);
+                    this.dayModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
             </div>
           <div className="grid-item-content">
             <ul className="ul-list">
@@ -257,7 +305,20 @@ class MainPage extends Component {
         </div>
         <div className="grid-item-lower-right">
           <div className="grid-item-title">
-            <h1 className="item-title day-out-title">月別支出</h1>
+            <div className="item-title">
+              <span className="per-day-title">月別支出</span>
+              <a className="add-a-per-day" href="#" onClick = {e => {
+                if(this.state.monthFlag === false){
+                  this.InOutChange("支出");
+                  this.monthModal(!this.state.modalSxhow1);
+                  this.dayModal(false);
+                } else if(this.state.monthFlag ===true){
+                  this.monthModal(!this.state.modalShow1);
+                  this.dayModal(false);
+                }}}>
+                <span class="material-icons per-day-add-icons">add_circle_outline</span>
+              </a>
+            </div>
           </div>
           <div className="grid-item-content">
             <ul className="ul-list">
@@ -310,43 +371,16 @@ class MainPage extends Component {
       <ModalCopy 
         flag = {this.state.dayFlag}
         modalShow = {this.dayModal}
-        UserID = {this.state.UserID}>
+        UserID = {this.state.UserID}
+        InOutCode = {this.state.InOutCode}>
       </ModalCopy>
         
       <FixedModalCopy 
         flag = {this.state.monthFlag}
         modalShow1 = {this.monthModal}
-        UserID = {this.state.UserID}>
+        UserID = {this.state.UserID}
+        InOutCode = {this.state.InOutCode}>
       </FixedModalCopy>
-
-      <div className="add-btn-container">
-        <div className="add-btn-div">
-          <button className="add-btn-per-day add-btn" onClick={e => {
-            e.preventDefault();
-            if(this.state.dayFlag === false){
-              this.dayModal(!this.state.modalShow);
-              this.monthModal(false);
-            } else if(this.state.dayFlag === true) {
-              this.dayModal(!this.state.modalShow);
-              this.monthModal(false);
-            }}}>
-            일별지출
-          </button>
-        </div>
-        <div className="add-btn-div">
-          <button className="add-btn-per-month add-btn" name="btnMonth" onClick={e => {
-            e.preventDefault();
-            if(this.state.monthFlag === false){
-              this.monthModal(!this.state.modalSxhow1);
-              this.dayModal(false);
-            } else if(this.state.monthFlag ===true){
-              this.monthModal(!this.state.modalShow1);
-              this.dayModal(false);
-            }}}>
-            월별지출
-          </button>
-        </div>
-      </div>
     </div>    
   );
   }

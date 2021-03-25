@@ -8,7 +8,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background:rgba(255, 235, 238,0.2);
 }
 
 .modal-frame {
@@ -19,8 +19,30 @@
     left: 250px;
     overflow-y: scroll;
     overflow-x: scroll;
-    background: white;
+    background: rgb(250, 239, 239);
     border: 1.5px solid black;
+}
+
+input {
+    font-size: 13px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+}
+
+.modal-select-btns {
+    font-size: 16px;
+    text-align: center;
+    width: 70px;
+    height: 40px;
+    color: black;
+    background: rgb(245, 224, 244);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    box-shadow: 2px 2px rgb(241, 128, 232);
 }
 
 .cloase-btn {

@@ -13,7 +13,7 @@ class FixedModalCopy  extends Component {
             DetailContent: '',
             Date: '',
             Price: '',
-            InOutCode: '収入',
+            InOutCode: '',
             DivisionCode: '',
             AssetsCode: '',
             id: ''
@@ -55,7 +55,7 @@ class FixedModalCopy  extends Component {
             PaymentMonth: this.state.PaymentMonth,
             PaymentDay: this.state.PaymentDay,
             Price: this.state.Price,
-            InOutCode: this.state.InOutCode,
+            InOutCode: this.props.InOutCode,
             DivisionCode: this.state.DivisionCode,
             AssetsCode: this.state.AssetsCode
         }
@@ -116,7 +116,7 @@ class FixedModalCopy  extends Component {
         const clickDivision = this.clickDivision;
 
         let InOutChoice = '';
-        if (this.state.InOutCode === "収入") {
+        if (this.props.InOutCode == "収入") {
             InOutChoice =
                 <div className="btn-group3" aria-label="DivisionCode" name="DivisionCode" value={this.state.DivisionCode} onChange={this.handleValueChange}>
                     
@@ -131,7 +131,7 @@ class FixedModalCopy  extends Component {
                         <br />
                         <br />
                 </div>
-        } else if (this.state.InOutCode === "支出") {
+        } else if (this.props.InOutCode == "支出") {
             InOutChoice =
                 <div className="btn-group3" aria-label="DivisionCode" name="DivisionCode" value={this.state.DivisionCode} onChange={this.handleValueChange}>
                    
@@ -225,17 +225,15 @@ class FixedModalCopy  extends Component {
         } else {
             
             return (
-                
+                <div className="modal-main-frame">
                 <div className="modal-frame">
                     
                             <br />
                     <div>
-                        <input disabled type="text" placeholder="収入・支出" lable="収入・支出" name="InOutCode" value={this.state.InOutCode} onChange={this.handleValueChange} />
+                        <input disabled type="text" placeholder="収入・支出" lable="収入・支出" name="InOutCode" value={this.props.InOutCode} onChange={this.handleValueChange} />
                     </div>
                     <div className="btn-group1" name="InOutCode" value={this.state.InOutCode} onChange={this.handleValueChange}>
                             <br />
-                        <button variant="primary" value="収入" name="InOutCode" onClick={this.clickInOut}>収入</button>
-                        <button variant="danger"  value="支出" name="InOutCode" onClick={this.clickInOut}>支出</button>
                     </div>
                             <br />
                             <br />
@@ -281,6 +279,7 @@ class FixedModalCopy  extends Component {
                             this.props.modalShow1(false);
                         }.bind(this)}> やめる </button>
                     </div>                            
+                </div>
                 </div>
             )
         }

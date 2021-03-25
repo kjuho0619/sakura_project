@@ -2,6 +2,15 @@
     visibility: hidden;
 }
 
+.modal-main-frame {
+    width: 101%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:rgba(255, 235, 238,0.2);
+}
+
 .modal-frame {
     width: 750px;
     height: 800px;
@@ -11,7 +20,7 @@
    
     /* background-color: 'rgba(0,0,0,0.4)' */
     
-    background: pink;
+    /* background: pink; */
 }
 .btn-group button {
     background-color: #4CAF50;

@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Button, ButtonToolbar, ThemeProvider } from 'react-bootstrap';
 import '../css/Modal_1.css';
 
 const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
@@ -170,15 +169,15 @@ class Modal extends Component {
         let InOutChoice = '';
         if (this.props.InOutCode === "収入") {
             InOutChoice =
-                <div aria-label="DivisionCode"  name="DivisionCode" value={this.props.DivisionCode} onChange={this.DataChangeHandler}>
+                <div aria-label="DivisionCode" name="DivisionCode" value={this.props.DivisionCode} onChange={this.DataChangeHandler}>
 
-                    <button variant="light" name="DivisionCode" value="月給" label="月給" onClick={clickDivision}>月給</button>
-                    <button variant="light" name="DivisionCode" value="お小遣い" label="お小遣い" onClick={clickDivision} >お小遣い</button>
-                    <button variant="light" name="DivisionCode" value="ボーナス" label="ボーナス" onClick={clickDivision} >ボーナス</button>
-                    <button variant="light" name="DivisionCode" value="株式" label="株式" onClick={clickDivision} >株式</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="月給" label="月給" onClick={clickDivision}>月給</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="お小遣い" label="お小遣い" onClick={clickDivision} >お小遣い</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="ボーナス" label="ボーナス" onClick={clickDivision} >ボーナス</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="株式" label="株式" onClick={clickDivision} >株式</button>
                         <br />
                         <br />
-                    <button variant="secondary" name="DivisionCode" value="その他" label="その他" onClick={clickDivision}>その他</button>
+                    <button variant="secondary" className="modal-select-btns" name="DivisionCode" value="その他" label="その他" onClick={clickDivision}>その他</button>
                         <br />
                         <br />
                 </div>
@@ -186,19 +185,19 @@ class Modal extends Component {
             InOutChoice =
                 <div aria-label="DivisionCode" name="DivisionCode" value={this.props.DivisionCode} onChange={this.DataChangeHandler}>
                     
-                    <button variant="light" name="DivisionCode" value="食費" label="食費" onClick={clickDivision} >食費</button>
-                    <button variant="light" name="DivisionCode" value="交通" label="交通" onClick={clickDivision} >交通</button>
-                    <button variant="light" name="DivisionCode" value="文化" label="文化" onClick={clickDivision} >文化</button>
-                    <button variant="light" name="DivisionCode" value="家賃" label="家賃" onClick={clickDivision} >家賃</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="食費" label="食費" onClick={clickDivision} >食費</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="交通" label="交通" onClick={clickDivision} >交通</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="文化" label="文化" onClick={clickDivision} >文化</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="家賃" label="家賃" onClick={clickDivision} >家賃</button>
                         <br />
                         <br />
-                    <button variant="light" name="DivisionCode" value="洋服・美容" label="洋服・美容" onClick={clickDivision} >洋服・美容</button>
-                    <button variant="light" name="DivisionCode" value="健康" label="健康" onClick={clickDivision} >健康</button>
-                    <button variant="light" name="DivisionCode" value="光熱" label="光熱" onClick={clickDivision} >光熱</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="洋服・美容" label="洋服・美容" onClick={clickDivision} >洋服・美容</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="健康" label="健康" onClick={clickDivision} >健康</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="光熱" label="光熱" onClick={clickDivision} >光熱</button>
                         <br />
                         <br />
-                    <button variant="light"  name="DivisionCode" value="生活用品" label="生活用品" onClick={clickDivision} >生活用品</button>
-                    <button variant="secondary" name="DivisionCode" value="その他" label="その他" onClick={clickDivision} >その他</button>
+                    <button variant="light" className="modal-select-btns" name="DivisionCode" value="生活用品" label="生活用品" onClick={clickDivision} >生活用品</button>
+                    <button variant="secondary" className="modal-select-btns" name="DivisionCode" value="その他" label="その他" onClick={clickDivision} >その他</button>
                         <br />
                         <br />
                 </div>
@@ -208,8 +207,8 @@ class Modal extends Component {
 
         let ButtonChoice =
             <div>
-                <button variant="contained" name={this.props.indexKey} color="primary" onClick={this.handleEdit}>修正</button>
-                <button variant="outlined" name={this.props.indexKey} color="primary" onClick={this._delete}>削除</button>
+                <button variant="contained" className="modal-select-btns" name={this.props.indexKey} color="primary" onClick={this.handleEdit}>修正</button>
+                <button variant="outlined" className="modal-select-btns" name={this.props.indexKey} color="primary" onClick={this._delete}>削除</button>
             </div>
 
         if (!this.props.flag) {
@@ -239,8 +238,8 @@ class Modal extends Component {
                                 <br />
 
                         <div className="btn-group1" name="InOutCode" value={this.props.InOutCode} onChange={this.DataChangeHandler}>
-                            <button variant="primary" value="収入" name="InOutCode" onClick={this.clickInOut}>収入</button>
-                            <button variant="danger"  value="支出" name="InOutCode" onClick={this.clickInOut}>支出</button>
+                            <button variant="primary" className="modal-select-btns" value="収入" name="InOutCode" onClick={this.clickInOut}>収入</button>
+                            <button variant="danger"  className="modal-select-btns" value="支出" name="InOutCode" onClick={this.clickInOut}>支出</button>
                         </div>
                             <br />  
                         <div>
@@ -254,9 +253,9 @@ class Modal extends Component {
                         </div>
                         <div className="btn-group2" name="AssetsCode" value={this.props.AssetsCode} onChange={this.DataChangeHandler}>
                             <br />
-                            <button variant="warning" value="現金"  name="AssetsCode" onClick={this.clickAsset}>現金</button>
-                            <button variant="dark" value="カード"  name="AssetsCode" onClick={this.clickAsset}>カード</button>
-                            <button variant="success" value="銀行"  name="AssetsCode" onClick={this.clickAsset}>銀行</button>
+                            <button variant="warning" className="modal-select-btns" value="現金"  name="AssetsCode" onClick={this.clickAsset}>現金</button>
+                            <button variant="dark" className="modal-select-btns" value="カード"  name="AssetsCode" onClick={this.clickAsset}>カード</button>
+                            <button variant="success" className="modal-select-btns" value="銀行"  name="AssetsCode" onClick={this.clickAsset}>銀行</button>
                         </div>
                                 <br />
                                 <br />
