@@ -4,6 +4,7 @@ import '../css/Login.css';
 import logo from '../images/sakura_logo.png'
 
 const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
+let cnt = 0;
 
 class Login extends Component {
     state = {
@@ -62,7 +63,6 @@ class Login extends Component {
 
         Object.keys(this.state.Member).map(id => {
             const member = this.state.Member[id];
-            console.log('unlock: ' + member['Unlock']);
 
             if(member['UserID'] === this.state.UserID) {
                 idCheck = true;
@@ -76,27 +76,26 @@ class Login extends Component {
                         // 세션에 유저 정보 seq, userID 저장
                         localStorage.setItem('sessionID', id);
                         localStorage.setItem('sessionUser', this.state.UserID);
-                        localStorage.setItem('failCnt', 0);
+                        cnt = 0;
                         // main page
                         this.props.history.push('/main');
 
                     }else {
-                        let cnt = localStorage.getItem('failCnt');
-                        if(cnt == null) cnt = 0;
                         ++cnt;
 
                         if(cnt < 5) {
                             alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
-                            this.setState({
-                                UserPW: ''
-                            });
+                            let nextState = this.state.Member;
+                            nextState["UserPW"] = '';
+                            this.setState({Member: nextState});
+
                             // 비번 틀린 횟수를 세션에 저장. 새로고침해도 횟수 정보가 남아있게 하기 위해.
                             //localStorage.setItem('failCnt', cnt);
                         }else {
                             alert("パスワードを5回間違いました。\nアカウントが中止になります。");
                             localStorage.clear();
                             // 5회 비번 틀리면, unlock값을 false로 바꿔서 계정을 정지시킨다.
-
+                            
                             const Member = {
                                 UserID: member['UserID'],
                                 UserPW: member['UserPW'],
@@ -106,8 +105,8 @@ class Login extends Component {
                                 Phone: member['Phone'],
                                 Unlock: false
                             }
-                            // this._delete(id);
-                            // this._post(Member);
+                            this._delete(id);
+                            this._post(Member);
                         }
                     }
                 }

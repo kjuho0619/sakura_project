@@ -4,7 +4,6 @@ import MyInfoHeader from './MyInfoHeader.js'
 import '../css/Privacy.css';
 
 const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
-
 let cnt = 0;
 
 class Privacy extends Component {
@@ -77,13 +76,14 @@ class Privacy extends Component {
 
             if(cnt < 5){
                 alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
-                this.setState({
-                    inputPW: ''
-                })
+                
                 // 비번 틀린 횟수를 세션에 저장. 새로고침해도 횟수 정보가 남아있게 하기 위해.
                 // localStorage.setItem('failCnt', cnt);
             }else{
                 alert("パスワードを5回間違いました。\nアカウントが中止になります。");
+                let nextState = this.state.Member;
+                nextState["UserPW"] = '';
+                this.setState({Member: nextState});
                 // 5회 비번 틀리면, unlock값을 false로 바꿔서 계정을 정지시킨다.
                 // 메인 화면 접근하지 못하도록 로그아웃해서 페이지 이동시킴.
                 localStorage.clear();

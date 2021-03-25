@@ -69,9 +69,9 @@ class DeleteID extends Component {
 
             if(cnt < 5){
                 alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
-                this.setState({
-                    inputPW: ''
-                })
+                let nextState = this.state.Member;
+                nextState["UserPW"] = '';
+                this.setState({Member: nextState});
                 // 비번 틀린 횟수를 세션에 저장. 새로고침해도 횟수 정보가 남아있게 하기 위해.
                 // localStorage.setItem('failCnt', cnt);
             }else{
