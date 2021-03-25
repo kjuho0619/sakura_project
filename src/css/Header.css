@@ -1,0 +1,133 @@
+/* COMMON */
+img{
+    display: block;
+}
+a{
+    text-decoration: none;
+    color:#333;
+}
+/* HEADER */
+header{
+    font-family: 'Kosugi Maru', sans-serif;
+    border-bottom: 1px solid #c8c8c8;
+}
+header .nav{
+    width: 1200px;
+    height: 180px;
+    margin:0 auto;
+    background: #fff;
+    position:relative;
+}
+header .nav .sakura-logo-img{
+    width: 50px;
+    height: 50px;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    margin:auto 0;
+}
+header .nav .title-atag{
+    font-size: 28px;
+    width:230px;
+    height: 40px;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left: 45px;
+    right:0;
+    margin:auto 0;
+    padding:11px 16px;
+    color:#333;
+}
+header .sub-menu{
+    position: absolute;
+    top:10px;
+    right:0;
+    display: flex;
+}
+header .sub-menu ul.menu{
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+header .sub-menu ul.menu li{
+    position:relative;
+}
+header .sub-menu ul.menu li::before{
+    content:"";
+    width: 1px;
+    height: 12px;
+    background: #656565;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    margin: auto 0;
+}
+header .sub-menu ul.menu li:first-child:before{
+    display: none;
+}
+header .sub-menu ul.menu li.userID{
+    font-size: 12px;
+    padding:11px 16px;
+    display: block;
+    color:#656565;
+}
+header .sub-menu ul.menu li a{
+    font-size: 12px;
+    padding:11px 16px;
+    display: block;
+    color:#656565;
+}
+header .sub-menu ul.menu li a:hover{
+    color:#000;
+}
+
+header .main-menu{
+    position: absolute;
+    bottom: 0;
+    right:300px;
+    display: flex;
+}
+header .main-menu ul.menu{
+    display: flex;
+}
+header .main-menu ul.menu li{
+    margin-right:40px;
+    transition:all .3s ease 
+}
+header .main-menu ul.menu li a{
+    font-size: 18px;
+    padding:11px 16px;
+    display: block;
+    color:#333;
+    position: relative;
+}
+header .main-menu ul.menu li a:hover{
+    color:#e7284c;
+    transition:all .4s ease
+}
+header .main-menu ul.menu li a::after{
+    content: '';
+    width: 0%;
+    left: 50%;
+    height: 1px;
+    display: block;
+    position: absolute;
+    margin-top: 3px;
+    border-bottom: 2px solid #e7284c;
+    transition:all .3s ease;
+}
+header .main-menu ul.menu li a:hover::after{
+    content: '';
+    width: 100%;
+    left: 0px;
+    height: 1px;
+    display: block;
+    position: absolute;
+    margin-top: 3px;
+    border-bottom: 2px solid #e7284c;
+    transition:all .3s ease;
+}
+
+
+
+
