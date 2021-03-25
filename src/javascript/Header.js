@@ -67,7 +67,7 @@ class Header extends Component{
                                     ev.preventDefault();
                                     this.props.parentFunction('Statistic');
                                 }.bind(this)}>ABOUT AS</a> */}
-                                <Link to="/aboutas">ABOUT AS</Link>
+                                <Link to="/aboutas">ABOUT US</Link>
                             </li>
                         </ul>
                     </div>

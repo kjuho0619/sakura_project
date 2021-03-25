@@ -1,5 +1,128 @@
+.page-view2{
+    background: #ffebee;
+    width: 1200px;
+    height: 1400px;
+    margin:0 auto;
+}
 .aboutus-page{
     width: 100%;
-    height: 1000px;
+    height: 1400px;
     background: white;
+    position: relative;
+}
+.member-img-div{
+    width: 1050px;
+    position: absolute;
+    top: 300px;
+    left: 80px;
+    display: flex;
+    
+}
+.img-div-component{
+    width: 260px;
+}
+.img-prvt-div{
+    width: 100%;
+    height: 230px;
+    position: relative;
+}
+.member-img-div .sajin-itag{
+    width: 200px;
+    height: 200px;
+    border: 3px solid;
+    border-radius: 100px;
+    position: absolute;
+    top: 10px;
+    left: 27px;
+    cursor: pointer;
+}
+.member-name-div{
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0px;
+    border-bottom: solid 1px;
+}
+.myfunction-title-li{
+    padding: 7px 20px;
+    font-size: 23px;
+}
+.myfunction-content-li{
+    padding: 7px 45px;
+}
+.travel-icon{
+    width: 30px;
+    height: 20px;
+    font-size: 19px;
+    text-align: center;
+}
+.developer-img-view-div{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 850px;
+}
+
+.developer-img-div{
+    width: 100%;
+    position: relative;
+}
+.developer1-img{
+    position: absolute;
+    left: 100px;
+}
+.developer2-img{
+    position: absolute;
+    top:180px;
+    left: 100px;
+}
+.developer3-img{
+    position: absolute;
+    right: 100px;
+}
+.developer4-img{
+    position: absolute;
+    top:180px;
+    right: 100px;
+}
+.developer-title{
+    position: absolute;
+    font-size: 25px;
+}
+.developer-len{
+    margin-top: 40px;
+    display: flex;
+    padding: 10px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 20px;
+}
+.developer-len2{
+    margin-top: 40px;
+    height: 80px;
+    display: flex;
+    padding: 10px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 20px; 
+}
+.developer-itag{
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 80px;
+    height: 80px;
+}
+.firebase-itag{
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 120px;
+    height: 50px;
+    margin-top: 13px;
+}
+.jsx-itag{
+    margin-top: 18px;
+    height: 40px;
+}
+.aboutus-big-title-div{
+    display: flex;
+}
+.aboutus-big-title-div2{
+    display: flex;
 }
