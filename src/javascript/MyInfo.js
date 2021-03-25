@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MyInfoHeader from './MyInfoHeader.js'
 import '../css/MyInfo.css';
 
@@ -507,11 +508,11 @@ class MyInfo extends Component {
                             <tr className="blankLine"></tr>
                         </tbody>
                     </table>
-                    <div className="joinBtn">
-                        <a href="#" className="btn" onClick={modify}>修&nbsp;正</a>
+                    <div className="joinBtn" onClick={modify}>
+                        <a href="#" className="btn">修&nbsp;正</a>
                     </div>
-                    <div className="cancelBtn">
-                        <a href="/" className="btn" onClick={cancel}>キャンセル</a>
+                    <div className="cancelBtn" onClick={cancel}>
+                        <Link className="btn" to="/" >キャンセル</Link>
                     </div>
                 </div>
                 </main>

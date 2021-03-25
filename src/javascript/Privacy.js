@@ -76,7 +76,7 @@ class Privacy extends Component {
             ++cnt;
 
             if(cnt < 5){
-                alert('비밀번호를' + cnt + '회 잘못 입력하셨습니다.\n(실패 : ' + cnt + '회/5회)\n\n * 5회 이상 실패할 경우 고객님의 정보 보호를 위해 로그인이 제한됩니다.');
+                alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
                 this.setState({
                     inputPW: ''
                 })
@@ -153,6 +153,10 @@ class Privacy extends Component {
         });
     }
 
+    cancel = () => {
+        this.props.history.push('/');
+    }
+
     render(){
         return(
             <div className="Privacy">
@@ -179,10 +183,10 @@ class Privacy extends Component {
                                     </div>
                                 </tr>
                                 <tr>
-                                    <div className="btn confirmBtn">
-                                        <a href="#" className="a-btn1" onClick={this.checkPW}>確&nbsp;認</a>
+                                    <div className="btn confirmBtn" onClick={this.checkPW}>
+                                        <a href="#" className="a-btn1">確&nbsp;認</a>
                                     </div>
-                                    <div className="btn cancelBtn">
+                                    <div className="btn cancelBtn" onClick={this.cancel}>
                                         <Link className="a-btn2" to="/">キャンセル</Link>
                                     </div>
                                 </tr>

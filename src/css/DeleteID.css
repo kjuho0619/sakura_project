@@ -6,7 +6,7 @@
 }
 .DeleteID .deleteID-div{
     width: 1200px;
-    height: 50%;
+    height: 60%;
     position: relative;
     padding: 50px 0;
     top: 0px;
@@ -52,6 +52,12 @@
     color: rgb(241, 128, 232);
     text-align: center;
     margin-bottom: 7px;
+}
+.DeleteID .msg-pw{
+    width: 600px;
+    color: rgb(241, 128, 232);
+    text-align: center;
+    margin-bottom: 23px;
 }
 .DeleteID .msg{
     font-size: 16px;
@@ -105,12 +111,12 @@
 .DeleteID .confirmBtn{
     position: relative;
     top: -8px;
-    left: 72px;
+    left: 145px;
 }
 .DeleteID .cancelBtn{
     position: relative;
     top: -70px;
-    left: 235px;
+    left: 310px;
 }
 .DeleteID .confirmBtn:hover{
     background: rgba(241, 128, 232, 0.7);

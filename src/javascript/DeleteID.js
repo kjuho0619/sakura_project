@@ -17,13 +17,6 @@ class DeleteID extends Component {
                                                     // true이면 비번 확인 안 하고, 바로 myInfo로 이동함.
     }
 
-    sessionCheck(){
-        if(this.state.pwConfirm) {
-            // myInfo로 이동
-            this.props.history.push('/myInfo');
-        }
-    }
-
     startFocus(){
         this.pwInput.focus();
     }
@@ -48,7 +41,6 @@ class DeleteID extends Component {
     }
 
     componentDidMount(){
-        this.sessionCheck();
         this.startFocus();
         this._get();
     }
@@ -76,7 +68,7 @@ class DeleteID extends Component {
             ++cnt;
 
             if(cnt < 5){
-                alert('비밀번호를' + cnt + '회 잘못 입력하셨습니다.\n(실패 : ' + cnt + '회/5회)\n\n * 5회 이상 실패할 경우 고객님의 정보 보호를 위해 로그인이 제한됩니다.');
+                alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
                 this.setState({
                     inputPW: ''
                 })
@@ -153,6 +145,10 @@ class DeleteID extends Component {
         });
     }
 
+    cancel = () => {
+        this.props.history.push('/');
+    }
+
     render(){
         return(
             <div className="DeleteID">
@@ -184,7 +180,7 @@ class DeleteID extends Component {
                                 </tr>
                                 <tr>
                                     <div className="input_div">
-                                        <div className="msg-title">本人確認のため、もう一度暗証番号を入力してくださいませ。</div>
+                                        <div className="msg-pw">本人確認のため、もう一度暗証番号を入力してくださいませ。</div>
                                         <input type="text" name="UserID" value={this.state.Member['UserID']} readOnly /><br />
                                         <input 
                                                 type="password" name="inputPW" placeholder="Password" value={this.state.inputPW} 
@@ -195,10 +191,10 @@ class DeleteID extends Component {
                                     </div>
                                 </tr>
                                 <tr>
-                                    <div className="btn confirmBtn">
-                                        <a href="#" className="a-btn1" onClick={this.checkPW}>確&nbsp;認</a>
+                                    <div className="btn confirmBtn" onClick={this.checkPW}>
+                                        <a href="#" className="a-btn1">確&nbsp;認</a>
                                     </div>
-                                    <div className="btn cancelBtn">
+                                    <div className="btn cancelBtn" onClick={this.cancel}>
                                         <Link className="a-btn2" to="/">キャンセル</Link>
                                     </div>
                                 </tr>

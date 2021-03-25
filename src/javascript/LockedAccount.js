@@ -5,6 +5,10 @@ import sasakiMng from '../images/sasaki_mng.jpg'
 
 class LockedAccount extends Component {
 
+    goToMain = () => {
+        this.props.history.push('/');
+    }
+    
     render() {
         return (
             <div className="LockedAcc">
@@ -22,8 +26,8 @@ class LockedAccount extends Component {
                                 </div>
                             </tr>
                             <tr>
-                                <div className="btn">
-                                    <Link className="a-btn" to="/">Back</Link>
+                                <div className="btn" onClick={this.goToMain}>
+                                    <Link className="a-btn" to="/" >Back</Link>
                                 </div>
                             </tr>
                         </tbody>

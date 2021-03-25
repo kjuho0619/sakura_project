@@ -53,18 +53,22 @@
     color:rgb(8, 170, 245);
 }
 .LockedAcc .sasaki-mng-img{
-    width: 35%;
+    width: 33%;
     height: auto;
     position: absolute;
     top: 340px;
     left: 145px;
     bottom: 0;
     margin: auto 0;
+    border-radius: 10px;
+    border: 1.5px;
+    border-color: rgb(172, 170, 170);
+    border-style: solid;
 }
 .LockedAcc .btn{
     font-size: 16px;
     text-align: center;
-    width: 145px;
+    width: 150px;
     height: 50px;
     background: rgb(241, 128, 232);
     border-radius: 10px;
@@ -72,14 +76,14 @@
     cursor: pointer;
     position:absolute;
     top: 380px;
-    left: 240px;
+    left: 236px;
 }
 .LockedAcc .a-btn{
     color: whitesmoke;
     position: absolute;
-    left: 55px;
+    left: 58px;
     top: 16px;
-    outline: none;
+    /* outline: none; */
 }
 .LockedAcc .btn:hover{
     background: rgba(241, 128, 232, 0.7);

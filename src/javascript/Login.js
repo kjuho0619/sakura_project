@@ -86,12 +86,12 @@ class Login extends Component {
                         ++cnt;
 
                         if(cnt < 5) {
-                            alert('비밀번호를' + cnt + '회 잘못 입력하셨습니다.\n(실패 : ' + cnt + '회/5회)\n\n * 5회 이상 실패할 경우 고객님의 정보 보호를 위해 로그인이 제한됩니다.');
+                            alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
                             this.setState({
                                 UserPW: ''
                             });
                             // 비번 틀린 횟수를 세션에 저장. 새로고침해도 횟수 정보가 남아있게 하기 위해.
-                            localStorage.setItem('failCnt', cnt);
+                            //localStorage.setItem('failCnt', cnt);
                         }else {
                             alert("パスワードを5回間違いました。\nアカウントが中止になります。");
                             localStorage.clear();
@@ -113,7 +113,7 @@ class Login extends Component {
                 }
             }
         })
-        if(!idCheck) alert('아이디가 존재하지 않습니다.');
+        if(!idCheck) alert('そのIDはありません。');
     }
 
     _delete(id) {
@@ -150,6 +150,10 @@ class Login extends Component {
         });
     }
 
+    memberForm = () => {
+        this.props.history.push('/memberForm');
+    }
+
     render() {
         return(
             <div className="Login">
@@ -170,11 +174,11 @@ class Login extends Component {
                             ref={(ref) => {this.pwInput=ref}}
                         />
                         <br />
-                        <div className="login-button">
-                            <a href="/" className="login-atag" onClick={this.logIn}>ログイン</a>
+                        <div className="login-button" onClick={this.logIn}>
+                            <a href="/" className="login-atag">ログイン</a>
                         </div>
                         <br />
-                        <div className="Linked-div">
+                        <div className="Linked-div" onClick={this.memberForm}>
                             <Link className="Link-register" to="/memberForm">新規登録</Link>
                         </div>
                     </div>

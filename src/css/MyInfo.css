@@ -94,6 +94,7 @@
     left: 0px;
     bottom:50%;
     border-radius: 10px;
+    cursor: pointer;
 }
 .MyInfo .joinBtn:hover{
     background: rgba(241, 128, 232, 0.7);
@@ -109,6 +110,7 @@
     left: 117px;
     bottom:50%;
     border-radius: 10px;
+    cursor: pointer;
 }
 .MyInfo .cancelBtn:hover{
     background: rgba(241, 128, 232, 0.7);

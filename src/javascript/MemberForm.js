@@ -469,11 +469,11 @@ class MemberForm extends Component {
                             <tr className="blankLine"></tr>
                         </tbody>
                     </table>
-                    <div className="joinBtn">
-                        <a href="#" className="btn" onClick={validateAll}>登録</a>
+                    <div className="joinBtn" onClick={validateAll}>
+                        <a href="#" className="btn">登録</a>
                     </div>
-                    <div className="cancelBtn">
-                        <a href="/" className="btn" onClick={cancel}>キャンセル</a>
+                    <div className="cancelBtn" onClick={cancel}>
+                        <a href="/" className="btn">キャンセル</a>
                     </div>
                 </div>
             </div>
