@@ -1,0 +1,155 @@
+.main-page{
+    width: 100%;
+    height: 100%;
+    color:#333;    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.date-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.upper-side, .lower-side {
+    width: 95%;
+    height: 50%;
+    margin-top: 35px;
+    margin-left: 20px;
+}
+.flex-container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.ul-list {
+    height: 350px;
+    overflow-y: scroll;
+    /* margin-top: 30px; */
+}
+.grid-item-title {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid black;
+    background-color: whitesmoke;
+}
+.item-title {
+    width: 100%;
+    font-size: 30px;
+    /* margin-left: 160px; */
+	font-weight: bold;
+    display: flex;
+}
+.item-title {
+    justify-content: flex-end;
+}
+.add-a-per-day {
+    margin-right: 20px;
+}
+.per-day-title {
+    margin-right: 180px;
+}
+.grid-item-upper-left, .grid-item-upper-right, .grid-item-lower-left, .grid-item-lower-right{
+    /* border: 1px solid black; */
+    border: 1px solid black;
+    background: white;
+}
+.grid-item-upper-right, .grid-item-lower-right {
+    margin-left: 30px;
+}
+.grid-item-content {
+    width: 565px;
+    height: auto;    
+    background: white;
+}
+.list-link {
+    width: 100%;
+}
+.made-li:hover {
+    background: #c8c8c8;
+}
+.made-li {
+    width: 100%;
+    height: 90px;
+    border-top: 1px solid black;
+}
+.made-li:last-child {
+    border-bottom: 1px solid black;
+}
+.item-content .item-content-p {
+    margin: 25px 0;
+    text-align: center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.item-content2 .item-content-p {
+    margin: 25px 0;
+    text-align: center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.item-content {
+    color: black;
+    float: left;
+    width: 20%;
+    height: 80px;
+    margin: 0px 30px;
+    font-size: 20px;
+}
+.item-content2{
+    color: black;
+    float: left;
+    width: 28%;
+    height: 80px;
+    margin: 0px 25px;
+    font-size: 20px;
+}
+.material-div::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+
+.add-btn-container {
+    position: fixed;
+    bottom: 600px;
+    right: 90px;
+}
+.add-btn-div {
+    margin-top: 10px;
+}
+.add-btn{
+    width: 100px;
+    height: 70px;
+    margin-right: 27px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+}
+.upper-side {
+    animation: fadeIn ease 1s;
+}
+.lower-side {
+    animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        margin-left: 20%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
