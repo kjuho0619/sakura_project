@@ -106,7 +106,7 @@
 .Login .Linked-div:hover{
     background: rgba(241, 128, 232, 0.7);
 }
-.Login .login-atag{
+.Login .login-txt{
     width: 80px;
     height: 30px;
     cursor: pointer;

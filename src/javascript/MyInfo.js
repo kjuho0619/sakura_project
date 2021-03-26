@@ -449,8 +449,9 @@ class MyInfo extends Component {
                                     onChange={onChange}
                                     onKeyUp={validateAddr}
                                 />
-                                <div className="addrBtn">
-                                    <a href="#" className="ajaxzip3" onClick={this.fillAddr}>住所検索</a>
+                                <div className="addrBtn" onClick={this.fillAddr}>
+                                    <div className="ajaxzip3">住所検索</div>
+                                    {/* <a href="#" className="ajaxzip3" onClick={this.fillAddr}>住所検索</a> */}
                                 </div>
                                 </div>
                             </tr>
@@ -509,10 +510,12 @@ class MyInfo extends Component {
                         </tbody>
                     </table>
                     <div className="joinBtn" onClick={modify}>
-                        <a href="#" className="btn">修&nbsp;正</a>
+                        <div className="btn">修&nbsp;正</div>
+                        {/* <a href="#" className="btn">修&nbsp;正</a> */}
                     </div>
                     <div className="cancelBtn" onClick={cancel}>
-                        <Link className="btn" to="/" >キャンセル</Link>
+                        <div className="btn">キャンセル</div>
+                        {/* <Link className="btn" to="/" >キャンセル</Link> */}
                     </div>
                 </div>
                 </main>

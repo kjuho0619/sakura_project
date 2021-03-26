@@ -17,8 +17,6 @@ class Header extends Component{
     }
 
     render(){
-        console.log('infoColor: ' + this.props.infoColor);
-        console.log('deleteColor: ' + this.props.deleteColor);
         return(
             <div className="myInfoHeader">
                 <header>

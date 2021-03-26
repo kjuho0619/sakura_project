@@ -409,9 +409,8 @@ class MemberForm extends Component {
                                     onChange={onChange}
                                     onKeyUp={validateAddr}
                                 />
-                                {/* <button type="button" className="ajaxzip3" onClick={this.fillAddr}>住所検索</button> */}
-                                <div className="addrBtn">
-                                    <a href="#" className="ajaxzip3" onClick={this.fillAddr}>住所検索</a>
+                                <div className="addrBtn" onClick={this.fillAddr}>
+                                    <div className="ajaxzip3">住所検索</div>
                                 </div>
                                 </div>
                             </tr>
@@ -470,10 +469,10 @@ class MemberForm extends Component {
                         </tbody>
                     </table>
                     <div className="joinBtn" onClick={validateAll}>
-                        <a href="#" className="btn">登録</a>
+                        <div className="btn">登録</div>
                     </div>
                     <div className="cancelBtn" onClick={cancel}>
-                        <a href="/" className="btn">キャンセル</a>
+                        <div className="btn">キャンセル</div>
                     </div>
                 </div>
             </div>

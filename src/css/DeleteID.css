@@ -13,7 +13,7 @@
     left: 350px;
     background:white;
 }
-.DeleteID table{
+.DeleteID .contents{
     position: absolute;
     left: 320px
 }

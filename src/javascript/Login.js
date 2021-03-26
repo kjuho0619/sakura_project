@@ -85,9 +85,10 @@ class Login extends Component {
 
                         if(cnt < 5) {
                             alert('暗証番号を' + cnt + '回間違いました。\n(失敗 : ' + cnt + '回/5回)\n\n * 5回以上失敗したら、ログインが不可能になります。');
-                            let nextState = this.state.Member;
-                            nextState["UserPW"] = '';
-                            this.setState({Member: nextState});
+                            this.setState({
+                                UserID: this.state.UserID,
+                                UserPW: ''
+                            });
 
                             // 비번 틀린 횟수를 세션에 저장. 새로고침해도 횟수 정보가 남아있게 하기 위해.
                             //localStorage.setItem('failCnt', cnt);
@@ -174,11 +175,11 @@ class Login extends Component {
                         />
                         <br />
                         <div className="login-button" onClick={this.logIn}>
-                            <a href="/" className="login-atag">ログイン</a>
+                            <div className="login-txt">ログイン</div>
                         </div>
                         <br />
                         <div className="Linked-div" onClick={this.memberForm}>
-                            <Link className="Link-register" to="/memberForm">新規登録</Link>
+                            <div className="Link-register">新規登録</div>
                         </div>
                     </div>
                 </div>

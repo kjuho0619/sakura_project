@@ -9,6 +9,7 @@ import AboutUS from './javascript/AboutUs'
 import Privacy from './javascript/Privacy';
 import MyInfo from './javascript/MyInfo';
 import DeleteID from './javascript/DeleteID';
+import GoodBye from './javascript/GoodBye';
 import LockedAccount from './javascript/LockedAccount';
 
 class App extends Component{
@@ -26,6 +27,7 @@ class App extends Component{
         <Route path="/privacy" component={Privacy} />  
         <Route path="/myInfo" component={MyInfo} />
         <Route path="/deleteID" component={DeleteID} />
+        <Route path="/goodbye" component={GoodBye} />
         <Route path="/lockedAcc" component={LockedAccount} />
        </Router>
      </div> 
