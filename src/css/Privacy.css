@@ -1,0 +1,100 @@
+.Privacy main{
+    height: 1000px;
+    width: 100%;
+    background: #ffebee;
+    position: relative;
+}
+.Privacy .privacy-div{
+    width: 1200px;
+    height: 40%;
+    position: relative;
+    padding: 50px 0;
+    top: 0px;
+    left: 350px;
+    background:white;
+}
+.Privacy table{
+    position: absolute;
+    left: 380px
+}
+.Privacy input{
+    width: 290px;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    border: 1px solid #666666;
+    margin-bottom: 20px;
+    font-size: medium;
+    border-radius: 10px;
+    padding-left: 15px;
+    outline: none;
+}
+.Privacy .title{
+    font-size: 28px;
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.Privacy .msg{
+    font-size: 16px;
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom:0;
+    right:0;
+    margin:auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.Privacy .input_div{
+    text-align: center;
+}
+.Privacy .btn{
+    font-size: 16px;
+    text-align: center;
+    width: 145px;
+    height: 50px;
+    background: rgb(241, 128, 232);
+    border-radius: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.Privacy .a-btn1{
+    color: whitesmoke;
+    position: absolute;
+    left: 55px;
+    top:17px;
+    outline: none;
+}
+.Privacy .a-btn2{
+    color: whitesmoke;
+    position: absolute;
+    left: 35px;
+    top:17px;
+    outline: none;
+}
+.Privacy .confirmBtn{
+    position: relative;
+    top: -8px;
+    left: 72px;
+}
+.Privacy .cancelBtn{
+    position: relative;
+    top: -70px;
+    left: 235px;
+}
+.Privacy .confirmBtn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}
+.Privacy .cancelBtn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}

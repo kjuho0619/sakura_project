@@ -1,0 +1,90 @@
+.LockedAcc{
+    height: 1000px;
+    width: 100%;
+    background: #ffebee;
+    position: relative;
+}
+.LockedAcc .locked-div{
+    width: 450px;
+    height: 34%;
+    position: relative;
+    padding: 45px 90px 90px 95px;
+    top: 235px;
+    left: 650px;
+    background:white;
+    border-radius: 15px;
+}
+.LockedAcc .title{
+    font-size: 28px;
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.LockedAcc .msg{
+    font-size: 16px;
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom:0;
+    right:0;
+    margin:auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.LockedAcc .msg div{
+    margin-bottom: 7px;
+}
+.LockedAcc .msg .tanto1{
+    margin-top: 15px;
+    font-weight: 500;
+    color:rgb(8, 170, 245);
+}
+.LockedAcc .msg .tanto2{
+    font-weight: 400;
+    color:rgb(8, 170, 245);
+}
+.LockedAcc .sasaki-mng-img{
+    width: 33%;
+    height: auto;
+    position: absolute;
+    top: 340px;
+    left: 145px;
+    bottom: 0;
+    margin: auto 0;
+    border-radius: 10px;
+    border: 1.5px;
+    border-color: rgb(172, 170, 170);
+    border-style: solid;
+}
+.LockedAcc .btn{
+    font-size: 16px;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    background: rgb(241, 128, 232);
+    border-radius: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    position:absolute;
+    top: 380px;
+    left: 236px;
+}
+.LockedAcc .a-btn{
+    color: whitesmoke;
+    position: absolute;
+    left: 58px;
+    top: 16px;
+    /* outline: none; */
+}
+.LockedAcc .btn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}

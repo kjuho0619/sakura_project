@@ -101,8 +101,8 @@ class DayForReportViewModal extends Component{
                         </a>
                     </div>
                     <div className="ViewModal-Middle-div">
-                        <div className="idcheck">{this.props.selectKey}::::</div>
-                        <div className="idcheck2">{this.props.selectKey2}</div>
+                        {/* <div className="idcheck">{this.props.selectKey}::::</div>
+                        <div className="idcheck2">{this.props.selectKey2}</div> */}
                         {/* 資産 */}
                         <div className="ViewModal-AssetsCode-title">資産</div>
                         <div className="ViewModal-AssetsCode-value">{this.props.selectInfo.AssetsCode}</div>
@@ -128,10 +128,10 @@ class DayForReportViewModal extends Component{
                         {/* <div>{this.props.selectInfo.UserID}</div> */}
                     </div>
                     <div className="ViewModal-Bottom-div">
-                        <a className="ViewModal-Button ViewModal-updateButton" onClick={function(){
+                        <a className="ViewModal-Button ViewModal-updateButton" disabled='disabled' onClick={function(){
                             this.props.isModalInOut();
                         }.bind(this)}>修整</a>
-                        <a className="ViewModal-Button ViewModal-deleteButton" onClick={function(){
+                        <a className="ViewModal-Button ViewModal-deleteButton" disabled='disabled' onClick={function(){
                             this.handleDelete(this.props.selectKey);
                         }.bind(this)}>削除</a>
                         <a className="ViewModal-Button ViewModal-cancelButton" onClick={function(){

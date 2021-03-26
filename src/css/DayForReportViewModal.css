@@ -210,12 +210,18 @@
 }
 
 .ViewModal-updateButton{
+    background-color:rgba(80, 80, 80,0.5);
     position: absolute;
+    pointer-events: none;
+    cursor: default;
     top:10px;
     left: 120px;
 }
 .ViewModal-deleteButton{
+    background-color:rgba(80, 80, 80,0.5);;
     position: absolute;
+    pointer-events: none;
+    cursor: default;
     top:10px;
     left: 210px;
 }

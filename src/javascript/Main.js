@@ -21,9 +21,8 @@ class Main extends Component{
 
   pageMove(){
     //console.log(this.state.page);
-
   if(this.state.page === '/' || this.state.page === 'MainPage'){
-      return <MainPage></MainPage>;
+      return <MainPage UserID={this.state.sessionUser}></MainPage>;
     }else if(this.state.page === 'DayForReport'){
       //window.location.reload();
       return <DayForReport parentFunction={this.parentFunction} databaseURL={databaseURL} sessionUser={this.state.sessionUser}></DayForReport>;

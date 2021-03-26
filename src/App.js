@@ -8,6 +8,9 @@ import MyInfo from './javascript/MyInfo';
 import DayForReport from './javascript/DayForReport'
 import MonthForReport from './javascript/MonthForReport'
 import AboutUS from './javascript/AboutUs'
+import DeleteID from './javascript/DeleteID';
+import LockedAccount from './javascript/LockedAccount';
+import GoodBye from './javascript/GoodBye';
 
 class App extends Component{
   
@@ -23,6 +26,9 @@ class App extends Component{
         <Route path="/aboutas" component={AboutUS} />
         <Route path="/privacy" component={Privacy} />  
         <Route path="/myInfo" component={MyInfo} />
+        <Route path="/deleteID" component={DeleteID} />
+        <Route path="/lockedAcc" component={LockedAccount} />
+        <Route path="/goodbye" component={GoodBye} />
        </Router>
      </div> 
     );

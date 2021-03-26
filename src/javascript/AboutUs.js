@@ -25,6 +25,7 @@ import npm_img from "../images/npm.png"
 import react_img from "../images/react.png"
 import vscode_img from "../images/vscode.png"
 import yarn_img from "../images/yarn.png"
+import bootstrap_img from "../images/bootstrap.png"
 
 
 class AboutUs extends Component{
@@ -83,23 +84,43 @@ class AboutUs extends Component{
             <main>
                 <div className="page-view2">
                 <div className="aboutus-page">
-                    <div className="aboutus-big-title-div">
-                        <div class="aboutus-big-title-logo-div">
-                        <span class="material-icons">
-                            face
+
+                <div className="aboutus-big-title-div3">
+                    <div className="aboutus-big-title-logo-div2">
+                        <span class="aboutus-big-icon material-icons">
+                            layers
                         </span>
-                        </div>
-                        <div className="aboutus-big-title">MEMBERS</div>
                     </div>
+                    <div className="aboutus-big-title3">さくら正真家計簿の意味</div>
+                </div>
+
+                <div className="project-content-main-div">
+                    <div className="project-content1">
+                        <font className="project-company">さくらコマース</font>の一員である限り家計簿を書く時にも   
+                    </div>
+                    <div className="project-content2">
+                        <font className="project-name-point">正</font>直に<font className="project-name-point">真</font>面目に‼
+                    </div>
+                </div>
                     <div className="aboutus-big-title-div2">
                         <div class="aboutus-big-title-logo-div2">
-                            <span class="material-icons">
+                            <span class="aboutus-big-icon material-icons">
                                 construction
                             </span>
                         </div>
                         <div className="aboutus-big-title2">開発環境</div>
                     </div>
+
                     <div className="member-img-div">
+                        <div className="member-middle-div">
+                            <div className="aboutus-big-title-div">
+                                <div class="aboutus-big-title-logo-div">
+                                    <span class="aboutus-big-icon material-icons">
+                                        face
+                                    </span>
+                                </div>
+                                <div className="aboutus-big-title-eng">MEMBERS</div>
+                            </div>
                         <div className="img-div-component">
                             <div className="img-prvt-div kimjunho-img-div">
                                 <img className="sajin-itag kimjunho-itag" src={kimjunho_before} alt="SAKURA" onClick={function(){
@@ -192,27 +213,29 @@ class AboutUs extends Component{
                                 <li className="myfunction-content-li">▶ MODALで修正と削除</li>
                             </ul> 
                         </div>
+                        </div>
                     </div>
                     <div className="developer-img-view-div">
                         <div className="developer-img-div">
                             <div className="developer1-img">
-                                <div className="developer-title">【言語＆Library】</div>
+                                <div className="developer-title">【言語＆LIBRARY】</div>
                                 <div className="developer-len">
-                                    <img className="developer-itag" src={react_img}/>
-                                    <img className="developer-itag" src={html_img}/>
-                                    <img className="developer-itag" src={css_img}/>
-                                    <img className="developer-itag" src={javascript_img}/>
+                                    <img className="developer-itag react-itag" src={react_img}/>
+                                    <img className="developer-itag html_itag" src={html_img}/>
+                                    <img className="developer-itag css_itag" src={css_img}/>
+                                    <img className="developer-itag javascript_itag" src={javascript_img}/>
                                     <img className="developer-itag jsx-itag" src={jsx_img}/>
-                                    <img className="developer-itag" src={jquery_img}/>
+                                    <img className="developer-itag jquery_itag" src={jquery_img}/>
+                                    <img className="developer-itag bootstrap_itag" src={bootstrap_img}/>
                                 </div>
                             </div>
 
                             <div className="developer2-img">
-                                <div className="developer-title">【Server＆Developer】</div>
+                                <div className="developer-title">【SERVER＆DECELOPER】</div>
                                 <div className="developer-len">
-                                    <img className="developer-itag" src={nodejs_img2}/>
-                                    <img className="developer-itag" src={npm_img}/>
-                                    <img className="developer-itag" src={yarn_img}/>    
+                                    <img className="developer-itag nodejs_itag" src={nodejs_img2}/>
+                                    <img className="developer-itag npm_itag" src={npm_img}/>
+                                    <img className="developer-itag yarn_itag" src={yarn_img}/>    
                                 </div>
                             </div>
 
@@ -226,9 +249,9 @@ class AboutUs extends Component{
                             <div className="developer4-img">
                                 <div className="developer-title">【ツール】</div>
                                 <div className="developer-len">
-                                    <img className="developer-itag" src={vscode_img}/>
-                                    <img className="developer-itag" src={erdcloud_img}/>
-                                    <img className="developer-itag" src={github_img}/>
+                                    <img className="developer-itag vscode_itag" src={vscode_img}/>
+                                    <img className="developer-itag erdcloud_itag" src={erdcloud_img}/>
+                                    <img className="developer-itag github_itag" src={github_img}/>
                                 </div>
                             </div>
                         </div>

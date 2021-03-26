@@ -6,9 +6,7 @@ import ModalFixed from './FixedModal'
 import ModalCopy from './ModalCopy'
 import FixedModalCopy from './FixedModalCopy'
 
-// const databaseURL = "https://word-cloud-1c0dd-default-rtdb.firebaseio.com/";
-// const databaseURL = "https://firebsae-practice-default-rtdb.firebaseio.com/";
-const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com/";
+const databaseURL = "https://sakura-project-68d19-default-rtdb.firebaseio.com";
 
 class MakeList extends Component {
   test(param) {
@@ -21,61 +19,52 @@ class MakeList extends Component {
 
   render(){
     var count = 0;
-
     if(this.props.state != null) {
       return(
         <span>
           {Object.keys(this.props.state).map(keyIndex => {
             const indexValue = this.props.state[keyIndex];
-            // this.props.moneyCalcul(price);
-            // session에서 값 가져오기
-            if(indexValue.InOutCode === this.props.InOutCode
-              && this.props.Select === "Day"
-            // && indexValue.UserID === {sessionStorage.UserID}
-            // && indexValue.Date === this.props.CurrentDate
+            
+            if(indexValue.InOutCode == this.props.InOutCode
+              && this.props.Select == "Day"
+              && indexValue.UserID == this.props.UserID
+              && indexValue.Date == this.props.CurrentDate
             ) {
               count = count + 1;
             return (
-              <li key={keyIndex}>
-                <a className="list-link" href="" onClick={function(ev){
-                  ev.preventDefault();
-                  this.props.ModalShow(true);
-                  this.props.KeyChange(keyIndex);
-                }.bind(this)}>
-                  <div className="index-value-div-code">{indexValue.DivisionCode}</div>
-                  <div className="content-asset-box">
-                    <div className="index-value-content">{indexValue.Content}</div>
-                    <div className="index-value-asset-code">{indexValue.AssestsCode}</div>
-                  </div>
-                  <div className="index-value-price">
-                    {indexValue.Price}
-                  </div>
-                </a>
+              <a className="list-link" href="" onClick={function(ev){
+                ev.preventDefault();
+                this.props.ModalShow(true);
+                this.props.KeyChange(keyIndex);
+              }.bind(this)}>
+              <li key={keyIndex} className="made-li">
+                  <div className="list-item-container">
+                    <div className="item-divisioncode item-content"><p className="item-content-p">{indexValue.DivisionCode}</p></div>
+                    <div className="item-content-code item-content2"><p className="item-content-p">{indexValue.Content}</p></div>
+                    <div className="item-price item-content"><p className="item-content-p">{indexValue.Price}</p></div>
+                  </div>                  
               </li>
+              </a>
               );
-            } else if(indexValue.InOutCode === this.props.InOutCode
-              && this.props.Select === "Fixed"
-            // && indexValue.UserID === {sessionStorage.UserID}
-            // && indexValue.Date === this.props.CurrentDate
+            } else if(indexValue.InOutCode == this.props.InOutCode
+              && this.props.Select == "Fixed"
+              && indexValue.UserID == this.props.UserID
             ) {
               count = count + 1;
             return (
-              <li key={keyIndex}>
-                <a className="list-link" href="" onClick={function(ev){
-                  ev.preventDefault();
-                  this.props.ModalShow(true);
-                  this.props.KeyChange(keyIndex);
-                }.bind(this)}>
-                  <div className="index-value-div-code">{indexValue.DivisionCode}</div>
-                  <div className="content-asset-box">
-                    <div className="index-value-content">{indexValue.Content}</div>
-                    <div className="index-value-asset-code">{indexValue.AssestsCode}</div>
+              <a className="list-link" href="" onClick={function(ev){
+                ev.preventDefault();
+                this.props.ModalShow(true);
+                this.props.KeyChange(keyIndex);
+              }.bind(this)}>
+              <li key={keyIndex} className="made-li">
+                  <div className="list-item-container">
+                    <div className="item-divisioncode item-content"><p className="item-content-p">{indexValue.DivisionCode}</p></div>
+                    <div className="item-content-code item-content2"><p className="item-content-p">{indexValue.Content}</p></div>
+                    <div className="item-price item-content"><p className="item-content-p">{indexValue.Price}</p></div>
                   </div>
-                  <div className="index-value-price">
-                    {indexValue.Price}
-                  </div>
-                </a>
               </li>
+              </a>
               );
             }
           })}
@@ -98,10 +87,11 @@ class MainPage extends Component {
       managementForDay: {},
       managementForMonth: {},
       currentDate: moment().format('YYYY-MM-DD'),
+      UserID: localStorage.getItem('sessionUser'),
       perDayKey: '',
       perFixedKey: '',
       InOutCode: '',
-      modalDate: '',
+      Date: '',
       AssetsCode: '',
       DivisionCode: '',
       Price: '',
@@ -164,11 +154,10 @@ class MainPage extends Component {
   }
 
   keyChange = (key) => {
-    console.log(key);
     this.setState({
       perDayKey: key,
       InOutCode: this.state.managementForDay[key].InOutCode,
-      modalDate: this.state.managementForDay[key].Date,
+      Date: this.state.managementForDay[key].Date,
       AssetsCode: this.state.managementForDay[key].AssetsCode,
       DivisionCode: this.state.managementForDay[key].DivisionCode,
       Price: this.state.managementForDay[key].Price,
@@ -179,7 +168,6 @@ class MainPage extends Component {
   } 
 
   fixedKeyChange = (key) => {
-    console.log(this.state.managementForMonth[key]);
     this.setState({
       perFixedKey: key,
       InOutCode: this.state.managementForMonth[key].InOutCode,
@@ -197,105 +185,175 @@ class MainPage extends Component {
   DataChangeHandler = (e) => {
     let nextState = {};
     nextState[e.target.name] = e.target.value;
-
     this.setState(nextState)
   }
 
+  InOutChange = (e) => {
+    this.setState( {
+      InOutCode : e
+    })
+  }
+
   render(){
+    var currentDate = this.state.currentDate;
+    var dateList = currentDate.split("-");
+    var today = dateList[0] + "年 " + dateList[1] + "月 " + dateList[2] + "日";
     return(
       <div className="main-page">
+          <div className="date-title">
+            {today}
+          </div>
         <div className="flex-container upper-side">
           <div className="grid-item-upper-left">
             <div className="grid-item-title">
-              <span className="item-title">일별 수입</span>
-              <span>+ {this.state.calMoney}</span>
+              <div className="item-title">
+                <span className="per-day-title">日別収入</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  e.preventDefault();
+                  if(this.state.dayFlag === false){
+                    this.InOutChange("収入");
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  } else if(this.state.dayFlag === true) {
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
             </div>
             <div className="grid-item-content">
-              <ul className="in-come-ul">
+              <ul className="ul-list">
                <MakeList state={this.state.managementForDay}
                   Select="Day"
                   InOutCode="収入"
                   index={this.state.index}
                   ModalShow={this.modalShow}
                   KeyChange={this.keyChange}
-                  CurrentDate={this.state.currentDate}>
+                  CurrentDate={this.state.currentDate}
+                  ThatPrice={this.ThatPrice}
+                  UserID={this.state.UserID}>
                 </MakeList>
               </ul>
             </div>
           </div>
           <div className="grid-item-upper-right">
-            <p className="grid-item-title">
-              <span className="item-title">일별 지출</span>
-            </p>
+            <div className="grid-item-title">
+              <div className="item-title">
+                <span className="per-day-title">日別支出</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  e.preventDefault();
+                  if(this.state.dayFlag === false){
+                    this.InOutChange("支出");
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  } else if(this.state.dayFlag === true) {
+                    this.dayModal(!this.state.modalShow);
+                    this.monthModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
+            </div>
             <div className="grid-item-content">
-              <ul className="in-come-ul">
-                <span className="item-content">
-                  <MakeList state={this.state.managementForDay}
-                    Select="Day"
-                    InOutCode="支出"
-                    ModalShow={this.modalShow}
-                    KeyChange={this.keyChange}>
-                  </MakeList>
-                </span>
+              <ul className="ul-list">
+                <MakeList state={this.state.managementForDay}
+                  Select="Day"
+                  InOutCode="支出"
+                  CurrentDate={this.state.currentDate}
+                  ModalShow={this.modalShow}
+                  KeyChange={this.keyChange}
+                  ThatPrice={this.ThatPrice}
+                  UserID={this.state.UserID}>
+                </MakeList>
               </ul>
             </div>
           </div>
         </div>
         <div className="flex-container lower-side">
-          <div className="grid-item">
-            <p className="grid-item-title">
-              <span className="item-title">월별 수입</span>
-            </p>
+          <div className="grid-item-lower-left">
+            <div className="grid-item-title">
+              <div className="item-title">
+                <span className="per-day-title">月別収入</span>
+                <a className="add-a-per-day" href="#" onClick={e => {
+                  if(this.state.monthFlag === false){
+                    this.InOutChange("収入");
+                    this.monthModal(!this.state.modalSxhow1);
+                    this.dayModal(false);
+                  } else if(this.state.monthFlag ===true){
+                    this.monthModal(!this.state.modalShow1);
+                    this.dayModal(false);
+                  }}}>
+                  <span class="material-icons per-day-add-icons">add_circle_outline</span>
+                </a>
+              </div>
+            </div>
           <div className="grid-item-content">
-            <ul>
-              <span className="item-content">
-                <MakeList 
+            <ul className="ul-list">
+              <MakeList 
                 state={this.state.managementForMonth}
                 Select="Fixed"
                 InOutCode="収入"
                 ModalShow={this.fixedModalShow}
-                KeyChange={this.fixedKeyChange}>
-                </MakeList>
-              </span>
+                KeyChange={this.fixedKeyChange}
+                ThatPrice={this.ThatPrice}
+                UserID={this.state.UserID}>
+              </MakeList>
             </ul>
           </div>
         </div>
-        <div className="grid-item">
-          <p className="grid-item-title">
-            <span className="item-title">월별 지출</span>
-          </p>
+        <div className="grid-item-lower-right">
+          <div className="grid-item-title">
+            <div className="item-title">
+              <span className="per-day-title">月別支出</span>
+              <a className="add-a-per-day" href="#" onClick = {e => {
+                if(this.state.monthFlag === false){
+                  this.InOutChange("支出");
+                  this.monthModal(!this.state.modalSxhow1);
+                  this.dayModal(false);
+                } else if(this.state.monthFlag ===true){
+                  this.monthModal(!this.state.modalShow1);
+                  this.dayModal(false);
+                }}}>
+                <span class="material-icons per-day-add-icons">add_circle_outline</span>
+              </a>
+            </div>
+          </div>
           <div className="grid-item-content">
-            <ul>
-              <span className="item-content">
-                <MakeList 
-                  state={this.state.managementForMonth}
-                  Select="Fixed"
-                  InOutCode="支出"
-                  ModalShow={this.fixedModalShow}
-                  KeyChange={this.fixedKeyChange}>
-                </MakeList>
-              </span>
+            <ul className="ul-list">
+              <MakeList 
+                state={this.state.managementForMonth}
+                Select="Fixed"
+                InOutCode="支出"
+                ModalShow={this.fixedModalShow}
+                KeyChange={this.fixedKeyChange}
+                ThatPrice={this.ThatPrice}
+                UserID={this.state.UserID}>
+              </MakeList>
             </ul>
           </div>
         </div>
       </div>
       <ModalT 
             modalShow={this.modalShow} 
+            TermFlag="日別"
             DataChangeHandler={this.DataChangeHandler}
             managementForDay={this.state.managementForDay}
             flag={this.state.modalShow} 
             indexKey={this.state.perDayKey}
             InOutCode={this.state.InOutCode}
-            modalDate={this.state.modalDate}
+            modalDate={this.state.Date}
             AssetsCode={this.state.AssetsCode}
             DivisionCode={this.state.DivisionCode}
             Price={this.state.Price}
             Content={this.state.Content}
             DetailContent={this.state.DetailContent}
-            InOutCodeCheck={this.state.InOutCodeCheck}>
+            InOutCodeCheck={this.state.InOutCodeCheck}
+            UserID={this.state.UserID}>
       </ModalT>
       <ModalFixed
         FixedModalShow={this.fixedModalShow}
+        TermFlag="月別"
         DataChangeHandler={this.DataChangeHandler}
         flag={this.state.fixedModalShow}
         managementForFixed={this.state.managementForMonth}
@@ -307,42 +365,25 @@ class MainPage extends Component {
         InOutCode={this.state.InOutCode}
         Price={this.state.Price}
         Content={this.state.Content}
-        DetailContent={this.state.DetailContent}>
+        DetailContent={this.state.DetailContent}
+        UserID={this.state.UserID}>
       </ModalFixed>
 
       <ModalCopy 
         flag = {this.state.dayFlag}
-        modalShow = {this.dayModal}>
+        modalShow = {this.dayModal}
+        TermFlag="日別"
+        UserID = {this.state.UserID}
+        InOutCode = {this.state.InOutCode}>
       </ModalCopy>
         
       <FixedModalCopy 
         flag = {this.state.monthFlag}
-        modalShow1 = {this.monthModal}>
+        modalShow1 = {this.monthModal}
+        UserID = {this.state.UserID}
+        TermFlag="日別"
+        InOutCode = {this.state.InOutCode}>
       </FixedModalCopy>
-      <button onClick={e => {
-        e.preventDefault();
-        if(this.state.dayFlag === false){//일별 지출이 켜졌으면 가만히 있고 월별지출이 켜져있으면 일별지출을 꺼라
-          this.dayModal(!this.state.modalShow);
-          this.monthModal(false);
-        } else if(this.state.dayFlag === true) {
-          this.dayModal(!this.state.modalShow);
-          this.monthModal(false);
-        }}}>
-          일별지출
-        </button>
-
-        <button name="btnMonth" onClick={e => {
-          e.preventDefault();
-          console.log(e.target.name);
-          if(this.state.monthFlag === false){
-            this.monthModal(!this.state.modalSxhow1);
-            this.dayModal(false);
-          } else if(this.state.monthFlag ===true){
-            this.monthModal(!this.state.modalShow1);
-            this.dayModal(false);
-          }}}>
-          월별지출
-        </button>
     </div>    
   );
   }
