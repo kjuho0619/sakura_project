@@ -1,0 +1,82 @@
+.GoodBye{
+    height: 1000px;
+    width: 100%;
+    background: #ffebee;
+    position: relative;
+}
+.GoodBye .goodbye-div{
+    width: 450px;
+    height: 20%;
+    position: relative;
+    padding: 45px 90px 90px 95px;
+    top: 235px;
+    left: 650px;
+    background:white;
+    border-radius: 15px;
+}
+.GoodBye .title{
+    font-size: 28px;
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.GoodBye .msg{
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    color:rgb(8, 170, 245);
+    width: 450px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom:0;
+    right:0;
+    margin:auto 0;
+    margin-bottom: 30px;
+}
+.GoodBye .msg div{
+    margin-bottom: 14px;
+}
+.GoodBye .sasaki-mng-img{
+    width: 33%;
+    height: auto;
+    position: absolute;
+    top: 280px;
+    left: 145px;
+    bottom: 0;
+    margin: auto 0;
+    border-radius: 10px;
+    border: 1.5px;
+    border-color: rgb(172, 170, 170);
+    border-style: solid;
+}
+.GoodBye .btn{
+    font-size: 16px;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    background: rgb(241, 128, 232);
+    border-radius: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    position:absolute;
+    top: 220px;
+    left: 240px;
+}
+.GoodBye .a-btn{
+    color: whitesmoke;
+    position: absolute;
+    left: 58px;
+    top: 16px;
+    /* outline: none; */
+}
+.GoodBye .btn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}

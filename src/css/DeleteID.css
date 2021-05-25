@@ -1,0 +1,126 @@
+.DeleteID main{
+    height: 1000px;
+    width: 100%;
+    background: #ffebee;
+    position: relative;
+}
+.DeleteID .deleteID-div{
+    width: 1200px;
+    height: 60%;
+    position: relative;
+    padding: 50px 0;
+    top: 0px;
+    left: 350px;
+    background:white;
+}
+.DeleteID .contents{
+    position: absolute;
+    left: 320px
+}
+.DeleteID input{
+    width: 290px;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    border: 1px solid #666666;
+    margin-bottom: 20px;
+    font-size: medium;
+    border-radius: 10px;
+    padding-left: 15px;
+    outline: none;
+}
+.DeleteID input[type="checkbox"]{
+    width: 20px;
+    height: 17px;
+    margin-bottom: 10px;
+}
+.DeleteID .title{
+    font-size: 28px;
+    width: 600px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    color:#333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.DeleteID .msg-title{
+    width: 600px;
+    color: rgb(241, 128, 232);
+    text-align: center;
+    margin-bottom: 7px;
+}
+.DeleteID .msg-pw{
+    width: 600px;
+    color: rgb(241, 128, 232);
+    text-align: center;
+    margin-bottom: 23px;
+}
+.DeleteID .msg{
+    font-size: 16px;
+    width: 600px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    bottom:0;
+    right:0;
+    margin:auto 0;
+    color:#333;
+    text-align: center;
+}
+.DeleteID .msg1{
+    margin-bottom: 14px;
+}
+.DeleteID .msg2{
+    margin-bottom: -10px;
+}
+.DeleteID .checkbox{
+    padding-left: 130px;
+    margin-bottom: 40px;
+}
+.DeleteID .input_div{
+    text-align: center;
+}
+.DeleteID .btn{
+    font-size: 16px;
+    text-align: center;
+    width: 145px;
+    height: 50px;
+    background: rgb(241, 128, 232);
+    border-radius: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.DeleteID .a-btn1{
+    color: whitesmoke;
+    position: absolute;
+    left: 55px;
+    top:17px;
+    outline: none;
+}
+.DeleteID .a-btn2{
+    color: whitesmoke;
+    position: absolute;
+    left: 35px;
+    top:17px;
+    outline: none;
+}
+.DeleteID .confirmBtn{
+    position: relative;
+    top: -8px;
+    left: 145px;
+}
+.DeleteID .cancelBtn{
+    position: relative;
+    top: -70px;
+    left: 310px;
+}
+.DeleteID .confirmBtn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}
+.DeleteID .cancelBtn:hover{
+    background: rgba(241, 128, 232, 0.7);
+}

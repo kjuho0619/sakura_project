@@ -1,0 +1,236 @@
+.Modal-background{
+    width: 100%;
+    height: 102%;
+    background:rgba(255, 235, 238,0.2);    
+    position:absolute;
+    top:0;
+    left: 0;
+}
+.ViewModal-div{
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    background: white;
+    top:250px;
+    left: 350px;
+    border: solid 1.5px;
+}
+.ViewModal-Header-div{
+    width: 100%;
+    height: 35px;
+    background-color: ghostwhite;
+    border-bottom: 1px solid;
+    position: relative;
+}
+.ViewModal-Header-div .material-icons{
+    position:absolute;
+    background: #ffebee;
+    top: 4px;
+    right: 8px;
+    border:1px solid #bbbbbb;
+}
+.ViewModal-Header-div .material-icons:hover{
+    color: #e7284c;
+    transition:all .2s ease;
+    cursor: pointer;
+}
+.ViewModal-Middle-div{
+    overflow: auto;
+    width: 100%;
+    height: 504px;
+    background: white;
+    display: flex;
+    position: relative;
+    font-size: 23px;
+    color: #505050;
+}
+.yoilText6-div{
+    font-size: 18px;
+    color: white;
+    background: royalblue;
+    border-radius: 20px;
+    padding: 1px 4px;
+}
+.yoilText0-div{
+    font-size: 18px;
+    color: white;
+    background: orangered;
+    border-radius: 20px;
+    padding: 1px 4px;
+}
+.yoilText-div{
+    font-size: 18px;
+    color:whitesmoke;
+    background: #606060;
+    border-radius: 20px;
+    padding: 1px 4px;
+}
+.ViewModal-AssetsCode-title{
+    position: absolute;
+    left :80px;
+    top: 170px;
+    background: pink;
+    color: white;
+    padding: 2px;
+    width: 100px;
+    font-size: 21px;
+}
+.ViewModal-AssetsCode-value{
+    position: absolute;
+    left: 200px;
+    top:170px;
+}
+.ViewModal-Content-title{
+    font-size: 21px;
+    left:80px;
+    top:350px;
+    width: 100px;
+    background: palevioletred;
+    position: absolute;
+    color: whitesmoke;
+    padding: 2px;
+}
+.ViewModal-Content-value{
+    position: absolute;
+    left: 200px;
+    top:350px;
+}
+.ViewModal-Date-title{
+    font-size: 21px;
+    left:80px;
+    top:50px;
+    width: 100px;
+    background: plum;
+    position: absolute;
+    color: whitesmoke;
+    padding: 2px;
+}
+.ViewModal-Date-value{
+    left: 200px;
+    top:50px;
+    position: absolute;
+}
+.ViewModal-yoil-value{
+    position: absolute;
+    right: 153px;
+    top: 53px;
+}
+.ViewModal-DetailContent-title{
+    font-size: 21px;
+    left:80px;
+    top:410px;
+    width: 100px;
+    background: palevioletred;
+    position: absolute;
+    color: whitesmoke;
+    padding: 2px;
+}
+.ViewModal-DetailContent-value{
+    position: absolute;
+    left: 200px;
+    top:410px;
+    padding: 3px;
+    border: 1px solid #bbbbbb;
+    width: 260px;
+    height: 80px;
+}
+.ViewModal-DivisionCode-title{
+    font-size: 21px;
+    left:80px;
+    top:230px;
+    width: 100px;
+    background: pink;
+    position: absolute;
+    color: white;
+    padding: 2px;
+}
+.ViewModal-DivisionCode-value{
+    left: 200px;
+    top:230px;
+    position: absolute;
+}
+.ViewModal-InOutCode-title{
+    font-size: 21px;
+    left:80px;
+    top:110px;
+    width: 100px;
+    background: pink;
+    position: absolute;
+    color : white;
+    padding: 2px;
+
+}
+.ViewModal-income-value{
+    position: absolute;
+    color: royalblue;
+    top:110px;
+    left: 200px;
+}
+.ViewModal-expend-value{
+    position: absolute;
+    color: orangered;
+    top:110px;
+    left: 200px;
+}
+.ViewModal-Price-title{
+    font-size: 21px;
+    left:80px;
+    top:290px;
+    width: 100px;
+    background: pink;
+    position: absolute;
+    color : white;
+    padding: 2px;
+    
+}
+.ViewModal-Price-value{
+    position: absolute;
+    left: 200px;
+    top:290px;
+}
+.ViewModal2-div{
+    display: none;
+}
+.ViewModal-Bottom-div{
+    background-color: #ffebee;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    position: relative;
+}
+.ViewModal-Button{
+    width:80px;
+    background-color: #f8585b;
+    border: none;
+    border-radius:10px;
+    padding: 10px 0;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.ViewModal-updateButton{
+    background-color:rgba(80, 80, 80,0.5);
+    position: absolute;
+    pointer-events: none;
+    cursor: default;
+    top:10px;
+    left: 120px;
+}
+.ViewModal-deleteButton{
+    background-color:rgba(80, 80, 80,0.5);;
+    position: absolute;
+    pointer-events: none;
+    cursor: default;
+    top:10px;
+    left: 210px;
+}
+.ViewModal-cancelButton{
+    position: absolute;
+    top:10px;
+    left: 300px;
+}
+
+.ViewModal-Button:hover{
+    background:rgba(248,88,91,0.8);
+}
